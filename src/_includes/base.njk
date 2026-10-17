@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="/assets/style.css?v={{ build.v }}">
 {% if teamStyle %}<style>:root{ {{ teamStyle | safe }} }</style>{% endif %}
 </head><body><a class="skip" href="#main">Skip to content</a>
-<div class="wrap"><header class="top"><a class="logo" href="/" aria-label="{{ site.name }} home"><span class="dot" aria-hidden="true">TV</span><span>howtowatch<em>nba</em></span></a>
-<nav aria-label="Main">{% set nav = [["/tonight/","Tonight"],["/teams/","Teams"],["/moved/","Where Every Team Moved"],["/blackouts/","Blackout checker"],["/which-night/","Which night"]] %}{% for n in nav %}<a href="{{ n[0] }}"{% if page.url == n[0] %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}</nav><a class="adv" href="/advertise/"{% if page.url == '/advertise/' %} aria-current="page"{% endif %}>Advertise</a></header></div>
+<div class="topbar" id="topbar"><div class="wrap"><header class="top"><a class="logo" href="/" aria-label="{{ site.name }} home"><span class="dot" aria-hidden="true">TV</span><span>howtowatch<em>nba</em></span></a>
+<nav aria-label="Main">{% set nav = [["/tonight/","Tonight"],["/teams/","Teams"],["/moved/","Where Every Team Moved"],["/blackouts/","Blackout checker"],["/which-night/","Which night"]] %}{% for n in nav %}<a href="{{ n[0] }}"{% if page.url == n[0] %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}<a class="nav-adv" href="/advertise/"{% if page.url == '/advertise/' %} aria-current="page"{% endif %}>Advertise</a></nav><div class="hcta"><a class="adv" href="/advertise/"{% if page.url == '/advertise/' %} aria-current="page"{% endif %}>Advertise</a><a class="nlb" href="{{ site.newsletterUrl }}" target="_blank" rel="noopener">Free email</a></div></header></div></div>
 <main id="main">{{ content | safe }}</main>
 <div class="wrap fband">{% include "newsletter.njk" %}</div>
 <footer class="foot"><div class="wrap">

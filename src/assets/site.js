@@ -48,3 +48,14 @@ document.addEventListener('click', e => {
   };
   if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, old); else old();
 });
+
+// Sticky header: shadow once scrolled; expose its height as --hh for anchor offsets.
+(() => {
+  const bar = document.getElementById('topbar'); if (!bar) return;
+  const r = document.documentElement;
+  const size = () => r.style.setProperty('--hh', bar.offsetHeight + 'px');
+  const tick = () => bar.classList.toggle('scrolled', scrollY > 4);
+  size(); tick();
+  addEventListener('resize', size, { passive: true });
+  addEventListener('scroll', tick, { passive: true });
+})();
