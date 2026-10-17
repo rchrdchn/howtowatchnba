@@ -59,3 +59,34 @@ document.addEventListener('click', e => {
   addEventListener('resize', size, { passive: true });
   addEventListener('scroll', tick, { passive: true });
 })();
+
+// Mobile burger menu: toggles #mainnav as a panel under the sticky header.
+(() => {
+  const bar = document.getElementById('topbar'), btn = document.getElementById('burger'), nav = document.getElementById('mainnav');
+  if (!bar || !btn || !nav) return;
+  const r = document.documentElement, mq = matchMedia('(max-width:1100px)');
+  const isOpen = () => btn.getAttribute('aria-expanded') === 'true';
+  const items = () => [...nav.querySelectorAll('a,button')].filter(el => el.offsetParent !== null);
+  const set = (o, back) => {
+    btn.setAttribute('aria-expanded', o); bar.classList.toggle('open', o); r.classList.toggle('menu-open', o);
+    if (o) { const f = items()[0]; if (f) f.focus({ preventScroll: true }); } else if (back) btn.focus();
+  };
+  btn.addEventListener('click', () => set(!isOpen()));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', e => {
+    if (!isOpen()) return;
+    if (e.key === 'Escape') { set(false, true); return; }
+    if (e.key !== 'Tab') return;
+    const list = [btn, ...items()], first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  // Tap outside closes. Taps on the dimmed page are swallowed; taps elsewhere in the header still work.
+  document.addEventListener('click', e => {
+    if (!isOpen() || nav.contains(e.target) || btn.contains(e.target)) return;
+    if (!bar.contains(e.target)) { e.preventDefault(); e.stopPropagation(); }
+    set(false);
+  }, true);
+  const off = e => { if (!e.matches && isOpen()) set(false); };
+  mq.addEventListener ? mq.addEventListener('change', off) : mq.addListener(off);
+})();
