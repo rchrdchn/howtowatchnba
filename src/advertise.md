@@ -12,7 +12,7 @@ description: "Sponsor the weekly newsletter, place a banner on team pages, or sp
 
 <p class="lead">Reach NBA fans at the exact moment they decide how to watch: which streaming service to buy, whether to get an antenna, which game to plan the night around. Placements are open now at launch pricing.</p>
 
-<p><a class="btn" href="mailto:{{ site.email }}?subject=Advertising%20launch%20rates">Email for launch rates →</a></p>
+{% emailOptions "Advertising launch rates", "Email for launch rates →" %}
 
 ## Who reads How to Watch NBA
 
@@ -55,6 +55,6 @@ The site launched in October 2026, so we don't quote traffic numbers yet. Early 
 
 ## Book a placement
 
-Email **[{{ site.email }}](mailto:{{ site.email }}?subject=Advertising%20launch%20rates)** with the placement you want, your dates and a link to your product. We usually reply within one business day.
+Email **[{{ site.email }}](mailto:{{ site.email }}?subject=Advertising%20launch%20rates)** with the placement you want, your dates and a link to your product. We usually reply within one business day. If clicking the address doesn't open an email app, use the Copy email button above or open Gmail or Outlook on the web.
 
 </div>

@@ -18,5 +18,14 @@ module.exports = function (c) {
   c.addFilter('pt', d => tv.time(d, 'America/Los_Angeles'));
   c.addFilter('sitemapPages', ps => ps.filter(p => p.url && p.url.endsWith('/') && !p.data.noindex).sort((a, b) => a.url === '/' ? -1 : b.url === '/' ? 1 : a.url.localeCompare(b.url)));
   c.addFilter('isoDate', d => new Date(d).toISOString().slice(0, 10));
+  // Email CTA with fallbacks for visitors whose browser has no default mail app: mailto button, Copy email, visible address, Gmail/Outlook web compose.
+  c.addShortcode('emailOptions', (subject = '', label = 'Email us') => {
+    const to = 'hello@howtowatchnba.com', e = encodeURIComponent, q = s => s.replace(/&/g, '&amp;');
+    const mailto = `mailto:${to}${subject ? `?subject=${e(subject)}` : ''}`;
+    const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${e(to)}${subject ? `&su=${e(subject)}` : ''}`;
+    const outlook = `https://outlook.office.com/mail/deeplink/compose?to=${e(to)}${subject ? `&subject=${e(subject)}` : ''}`;
+    return `<div class="emo"><p class="emobtns"><a class="btn" href="${q(mailto)}">${label}</a><button type="button" class="btn2 ecopy" data-email="${to}">Copy email</button></p>`
+      + `<p class="emoalt"><span class="emaddr">${to}</span><span class="emweb">No mail app? <a href="${q(gmail)}" target="_blank" rel="noopener">Open in Gmail</a> · <a href="${q(outlook)}" target="_blank" rel="noopener">Open in Outlook</a></span></p></div>`;
+  });
   return { dir: { input: 'src', includes: '_includes', data: '_data', output: '_site' }, templateFormats: ['njk', 'md', '11ty.js'], markdownTemplateEngine: 'njk', htmlTemplateEngine: 'njk' };
 };

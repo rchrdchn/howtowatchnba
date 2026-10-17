@@ -11,13 +11,19 @@
 <div class="wrap"><header class="top"><a class="logo" href="/" aria-label="{{ site.name }} home"><span class="dot" aria-hidden="true">TV</span><span>howtowatch<em>nba</em></span></a>
 <nav aria-label="Main">{% set nav = [["/tonight/","Tonight"],["/teams/","Teams"],["/moved/","Where Every Team Moved"],["/blackouts/","Blackout checker"],["/which-night/","Which night"]] %}{% for n in nav %}<a href="{{ n[0] }}"{% if page.url == n[0] %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}</nav><a class="adv" href="/advertise/"{% if page.url == '/advertise/' %} aria-current="page"{% endif %}>Advertise</a></header></div>
 <main id="main">{{ content | safe }}</main>
-<div class="wrap">{% include "newsletter.njk" %}
-<footer class="foot"><div class="fcols">
-<nav aria-label="Tools"><h3>Tools</h3><a href="/tonight/">Tonight's games</a><a href="/blackouts/">League Pass blackout checker</a><a href="/moved/">Where Every Team Moved</a><a href="/which-night/">Which night is whose</a><a href="/teams/">All 30 teams</a></nav>
-<nav aria-label="East"><h3>East</h3>{% for t in teams %}{% if t.conf == "East" %}<a href="/teams/{{ t.slug }}/">{{ t.name }}</a>{% endif %}{% endfor %}</nav>
-<nav aria-label="West"><h3>West</h3>{% for t in teams %}{% if t.conf == "West" %}<a href="/teams/{{ t.slug }}/">{{ t.name }}</a>{% endif %}{% endfor %}</nav>
-<nav aria-label="Site"><h3>Site</h3><a href="/about/">About &amp; sources</a><a href="/contact/">Contact</a><a href="/advertise/">Advertise</a><a href="/privacy/">Privacy</a><a href="/sitemap.xml">Sitemap</a></nav></div>
-<p class="legal">Local channels hand-checked {{ site.localChecked }} from team, station and trade-press sources; anything we could not confirm is marked unconfirmed. Schedules and national TV refresh nightly. Channels can change, so confirm with your provider. Not affiliated with the NBA, any team or broadcaster. © {{ build.year }} {{ site.name }}</p></footer></div>
+<div class="wrap fband">{% include "newsletter.njk" %}</div>
+<footer class="foot"><div class="wrap">
+<div class="ftop">
+<div class="fbrand"><a class="logo" href="/" aria-label="{{ site.name }} home"><span class="dot" aria-hidden="true">TV</span><span>howtowatch<em>nba</em></span></a>
+<p class="ftag">Your team moved channels. <span>Here's where.</span></p>
+<p class="fmail"><a href="mailto:{{ site.email }}">{{ site.email }}</a><button type="button" class="fcopy ecopy" data-email="{{ site.email }}" aria-label="Copy email address">Copy</button></p>
+<a class="fadv" href="/advertise/">Advertise with us →</a></div>
+<nav class="fl" aria-label="Tools"><h3>Tools</h3><a href="/tonight/">Tonight's games</a><a href="/blackouts/">League Pass blackout checker</a><a href="/moved/">Where Every Team Moved</a><a href="/which-night/">Which night is whose</a><a href="/teams/">All 30 teams</a></nav>
+<nav class="fl" aria-label="Site"><h3>Site</h3><a href="/about/">About &amp; sources</a><a href="/contact/">Contact</a><a href="/advertise/">Advertise</a><a href="/privacy/">Privacy</a><a href="/sitemap.xml">Sitemap</a></nav>
+</div>
+<div class="fteams">{% for conf in ["East","West"] %}<nav class="fconf fc-{{ conf | lower }}" aria-label="{{ conf }} teams"><h3>{{ conf }}<span>15 teams</span></h3><div class="fchips">{% for t in teams %}{% if t.conf == conf %}<a href="/teams/{{ t.slug }}/" style="--c1:{{ t.c1 | safeBg }};--c2:{{ t.c2 }}"><i aria-hidden="true">{{ t.abbr }}</i><span>{{ t.name }}</span></a>{% endif %}{% endfor %}</div></nav>{% endfor %}</div>
+<div class="fbar"><p class="legal">Local channels hand-checked {{ site.localChecked }} from team, station and trade-press sources; anything we could not confirm is marked unconfirmed. Schedules and national TV refresh nightly. Channels can change, so confirm with your provider. Not affiliated with the NBA, any team or broadcaster.</p><p class="copy">© {{ build.year }} {{ site.name }}</p></div>
+</div></footer>
 {% if site.cfAnalyticsToken %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfAnalyticsToken }}"}'></script>{% else %}<!-- Cloudflare Web Analytics: set site.cfAnalyticsToken in src/_data/site.json to enable -->{% endif %}
 <script defer src="/assets/site.js?v={{ build.v }}"></script>
 </body></html>

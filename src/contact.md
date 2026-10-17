@@ -12,6 +12,8 @@ description: "Report a channel change, ask a question or ask about advertising."
 
 <p class="lead">Email <a href="mailto:{{ site.email }}">{{ site.email }}</a>. We read everything.</p>
 
+{% emailOptions "", "Email us →" %}
+
 - **Wrong channel?** Tell us the team, the game and where you saw the right one. A link helps.
 - **Advertising?** See [advertise](/advertise/) or email us with "Advertising" in the subject.
 - **Press or partnerships?** Same address.

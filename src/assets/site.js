@@ -33,3 +33,18 @@
     });
   }
 })();
+
+// Copy-email buttons (.ecopy): clipboard API, then execCommand, then select the visible address. Shows "Copied!" for 2s.
+document.addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('.ecopy'); if (!b) return;
+  const t = b.dataset.email, l = b.dataset.l || (b.dataset.l = b.textContent);
+  const ok = () => { b.textContent = 'Copied!'; b.classList.add('done'); clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = l; b.classList.remove('done'); }, 2000); };
+  const old = () => {
+    const a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', ''); a.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(a); a.select();
+    let r = false; try { r = document.execCommand('copy'); } catch (x) {} a.remove();
+    if (r) return ok();
+    const n = (b.closest('.emo') || document).querySelector('.emaddr'); if (n) { const g = document.createRange(); g.selectNodeContents(n); const w = getSelection(); w.removeAllRanges(); w.addRange(g); }
+    b.textContent = 'Press Ctrl+C / ⌘C';
+  };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, old); else old();
+});
