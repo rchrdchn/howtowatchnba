@@ -9,7 +9,7 @@ const faq = (t, l) => [
 ];
 module.exports = {
   layout: 'base.njk',
-  pagination: { data: 'teams', size: 1, alias: 't' },
+  pagination: { data: 'teams', size: 1, alias: 't', addAllPagesToCollections: true },
   permalink: d => `/teams/${d.t.slug}/`,
   eleventyComputed: {
     l: d => local[d.t.slug],
