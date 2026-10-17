@@ -156,3 +156,4 @@ footer.foot{margin-top:56px;border-top:2px solid var(--bd);padding:26px 0 40px;c
 .fcols a{text-decoration:none}.fcols a:hover{text-decoration:underline}
 .legal{font-size:12px;margin-top:20px;max-width:900px}
 @media(max-width:860px){.hero{grid-template-columns:1fr}.th{grid-template-columns:1fr;padding:24px 18px}.f{grid-template-columns:1fr}}
+.band .soon{flex:1 1 300px;margin:0;font-weight:700;font-size:17px;line-height:1.4}.band .soon .tag{margin-right:6px;border:0}

@@ -32,5 +32,4 @@
       else { vd.className = 'verdict out'; vd.innerHTML = `<span class="st">YOU'RE CLEAR</span><h3>You're outside the ${esc(t.n)} market. League Pass shows their games that aren't on national TV.</h3><p>National games are blacked out on League Pass everywhere. Watch those on ESPN, ABC, NBC, Peacock or Prime Video.</p>${link}`; }
     });
   }
-  document.querySelectorAll('.nlf').forEach(n => n.addEventListener('submit', () => { n.querySelector('.msg').hidden = false; }));
 })();
