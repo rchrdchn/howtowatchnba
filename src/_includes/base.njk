@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>{{ title }}</title><meta name="description" content="{{ description }}"><link rel="canonical" href="{{ site.url }}{{ page.url }}"><meta name="theme-color" content="#ff4f5e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:site_name" content="{{ site.name }}"><meta property="og:title" content="{{ title }}"><meta property="og:description" content="{{ description }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta name="twitter:card" content="summary">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+{% if schema %}<script type="application/ld+json">{{ schema | json | safe }}</script>{% endif %}
+<link rel="stylesheet" href="/assets/style.css?v={{ build.v }}">
+{% if teamStyle %}<style>:root{ {{ teamStyle | safe }} }</style>{% endif %}
+</head><body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap"><header class="top"><a class="logo" href="/" aria-label="{{ site.name }} home"><span class="dot" aria-hidden="true">TV</span><span>howtowatch<em>nba</em></span></a>
+<nav aria-label="Main">{% set nav = [["/tonight/","Tonight"],["/teams/","Teams"],["/moved/","Where Every Team Moved"],["/blackouts/","Blackout checker"],["/which-night/","Which night"]] %}{% for n in nav %}<a href="{{ n[0] }}"{% if page.url == n[0] %} aria-current="page"{% endif %}>{{ n[1] }}</a>{% endfor %}</nav><a class="adv" href="/advertise/"{% if page.url == '/advertise/' %} aria-current="page"{% endif %}>Advertise</a></header></div>
+<main id="main">{{ content | safe }}</main>
+<div class="wrap">{% include "newsletter.njk" %}
+<footer class="foot"><div class="fcols">
+<nav aria-label="Tools"><h3>Tools</h3><a href="/tonight/">Tonight's games</a><a href="/blackouts/">League Pass blackout checker</a><a href="/moved/">Where Every Team Moved</a><a href="/which-night/">Which night is whose</a><a href="/teams/">All 30 teams</a></nav>
+<nav aria-label="East"><h3>East</h3>{% for t in teams %}{% if t.conf == "East" %}<a href="/teams/{{ t.slug }}/">{{ t.name }}</a>{% endif %}{% endfor %}</nav>
+<nav aria-label="West"><h3>West</h3>{% for t in teams %}{% if t.conf == "West" %}<a href="/teams/{{ t.slug }}/">{{ t.name }}</a>{% endif %}{% endfor %}</nav>
+<nav aria-label="Site"><h3>Site</h3><a href="/about/">About &amp; sources</a><a href="/contact/">Contact</a><a href="/advertise/">Advertise</a><a href="/privacy/">Privacy</a><a href="/sitemap.xml">Sitemap</a></nav></div>
+<p class="legal">Local channels hand-checked {{ site.localChecked }} from team, station and trade-press sources; anything we could not confirm is marked unconfirmed. Schedules and national TV refresh nightly. Channels can change, so confirm with your provider. Not affiliated with the NBA, any team or broadcaster. © {{ build.year }} {{ site.name }}</p></footer></div>
+{% if site.cfAnalyticsToken %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfAnalyticsToken }}"}'></script>{% else %}<!-- Cloudflare Web Analytics: set site.cfAnalyticsToken in src/_data/site.json to enable -->{% endif %}
+<script defer src="/assets/site.js?v={{ build.v }}"></script>
+</body></html>

@@ -1,0 +1,791 @@
+{
+ "hawks": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network South / Southeast",
+  "tv": "WANF Atlanta News First (46), plus Gray stations statewide (Peachtree Sports Network)",
+  "short": "WANF 46",
+  "row": "antenna",
+  "stream": "Not confirmed",
+  "free": "Every non-national game",
+  "unconfirmed": [
+   "Streaming option for local games"
+  ],
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   },
+   {
+    "t": "Awful Announcing: Main Street shutting down, 13 NBA teams affected (Apr 2, 2026)",
+    "url": "https://awfulannouncing.com/local-networks/main-street-sports-group-shuttering-13-nba-teams-local-tv.html"
+   }
+  ],
+  "checked": "2026-10-17",
+  "dazn": false,
+  "notes": "",
+  "status": "partial"
+ },
+ "celtics": {
+  "tv": "NBC Sports Boston",
+  "short": "NBCS Boston",
+  "row": "local",
+  "stream": "NBC Sports Boston on Peacock (regional add-on)",
+  "unconfirmed": [
+   "Peacock regional add-on details (one source)"
+  ],
+  "sources": [
+   {
+    "t": "NBC Sports Boston: 2026-27 Celtics printable schedule",
+    "url": "https://media.nbcsportsboston.com/2026/09/26-27-CELTICS-SCHEDULE-PRINTABLE.pdf"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "partial"
+ },
+ "nets": {
+  "tv": "YES Network",
+  "short": "YES",
+  "row": "local",
+  "stream": "YES on DAZN (in-market)",
+  "sources": [
+   {
+    "t": "YES Network: Nets announce 2026-27 schedule",
+    "url": "https://yesnetwork.com/brooklyn-nets-announce-2026-27-season-schedule/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "hornets": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Southeast",
+  "tv": "WSOC-TV (ABC 9) and WAXN (TV64), plus Gray and Sinclair stations in the Carolinas",
+  "short": "WSOC 9 / TV64",
+  "row": "antenna",
+  "stream": "Hornets on DAZN",
+  "dazn": true,
+  "free": "Every non-national game",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "bulls": {
+  "tv": "Chicago Sports Network (CHSN)",
+  "short": "CHSN",
+  "row": "local",
+  "stream": "CHSN app (in-market)",
+  "sources": [
+   {
+    "t": "Sports Media Watch: Bulls TV schedule 2026-27",
+    "url": "https://www.sportsmediawatch.com/tv-schedules/nba-tv-schedule/chicago-bulls/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "cavaliers": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Ohio",
+  "tv": "Rock Entertainment Sports Network; 15 games free on WOIO 19 and WUAB 43",
+  "short": "Rock ESN / DAZN",
+  "row": "dazn",
+  "stream": "Cavs on DAZN",
+  "dazn": true,
+  "free": "15 games (WOIO 19, WUAB 43)",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "Sports & Co: DAZN carries 8 of the 13 teams",
+    "url": "https://read.sportsandcompany.com/p/streamer-carries-8-of-13-nba-teams-that-lost-cable-home"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "mavericks": {
+  "tv": "KFAA 29, with some games on WFAA 8",
+  "short": "KFAA 29",
+  "row": "antenna",
+  "stream": "MavsTV",
+  "free": "Every non-national game",
+  "sources": [
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "nuggets": {
+  "tv": "Altitude Sports",
+  "short": "Altitude",
+  "row": "local",
+  "stream": "Altitude+",
+  "unconfirmed": [
+   "Select games on KUSA 9 (one source)"
+  ],
+  "sources": [
+   {
+    "t": "Denver Nuggets: How to watch",
+    "url": "https://www.nba.com/nuggets/how-to-watch"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "partial"
+ },
+ "pistons": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Detroit",
+  "tv": "WMYD TV20 (The Spot Detroit), plus statewide affiliates",
+  "short": "TV20 / DAZN",
+  "row": "antenna",
+  "stream": "Pistons on DAZN",
+  "dazn": true,
+  "free": "71 games",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "warriors": {
+  "tv": "NBC Sports Bay Area",
+  "short": "NBCS Bay Area",
+  "row": "local",
+  "stream": "NBC Sports Bay Area on Peacock (regional add-on)",
+  "unconfirmed": [
+   "Local game-by-game schedule not yet posted by the team"
+  ],
+  "sources": [
+   {
+    "t": "Warriors: 2026-27 schedule release",
+    "url": "https://warriors.com/news/warriors-announce-2026-27-regular-season-schedule-20260813"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "partial"
+ },
+ "rockets": {
+  "tv": "Space City Home Network",
+  "short": "SCHN",
+  "row": "local",
+  "stream": "SCHN+",
+  "sources": [
+   {
+    "t": "Houston Rockets: 2026-27 schedule announcement",
+    "url": "https://rockets.com/news/rockets-announce-schedule-for-2026-27-nba-season"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "pacers": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Indiana",
+  "tv": "DAZN is the main home; 15 games free on WTTV CBS4 and WXIN FOX59 (Nexstar)",
+  "short": "DAZN",
+  "row": "dazn",
+  "stream": "Pacers on DAZN",
+  "dazn": true,
+  "free": "15 games (CBS4, FOX59)",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "Sports & Co: DAZN carries 8 of the 13 teams",
+    "url": "https://read.sportsandcompany.com/p/streamer-carries-8-of-13-nba-teams-that-lost-cable-home"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "clippers": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network SoCal",
+  "tv": "ClipperVision (also a channel on DIRECTV, Fubo and Spectrum); select games on KTLA 5",
+  "short": "ClipperVision",
+  "row": "local",
+  "stream": "ClipperVision (NBA app)",
+  "free": "About 10 to 11 games on KTLA",
+  "unconfirmed": [
+   "Exact KTLA game count (10 or 11 reported)"
+  ],
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "dazn": false,
+  "notes": "",
+  "status": "partial"
+ },
+ "lakers": {
+  "tv": "Spectrum SportsNet",
+  "short": "Spectrum SN",
+  "row": "local",
+  "stream": "Spectrum SportsNet+",
+  "sources": [
+   {
+    "t": "Charter: Spectrum SportsNet 2026-27 Lakers schedule",
+    "url": "https://corporate.charter.com/newsroom/spectrum-sportsnet-lakers-2026-27-schedule"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "grizzlies": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network South / Southeast",
+  "tv": "DAZN is the main home; 15 games free on WATN ABC24",
+  "short": "DAZN",
+  "row": "dazn",
+  "stream": "Grizzlies on DAZN",
+  "dazn": true,
+  "free": "15 games (ABC24)",
+  "unconfirmed": [
+   "7 of the 15 ABC24 dates not yet announced"
+  ],
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "Sports Video Group: Grizzlies and DAZN to simulcast 15 games on ABC24",
+    "url": "https://www.sportsvideo.org/2026/10/06/memphis-grizzlies-and-dazn-to-simulcast-15-games-on-abc24/"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   }
+  ],
+  "checked": "2026-10-17",
+  "notes": "",
+  "status": "partial"
+ },
+ "heat": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Sun",
+  "tv": "WPLG Local 10",
+  "short": "Local 10",
+  "row": "antenna",
+  "stream": "Local 10+ Platinum app (free in South Florida)",
+  "free": "Every non-national game",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "bucks": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Wisconsin",
+  "tv": "My24 (WVTV-DT2), plus WBAY 2.3, WISC 3.2, WKBT 8.2 and WJFW 12.2",
+  "short": "My24",
+  "row": "antenna",
+  "stream": "Bucks+",
+  "free": "80 games",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "timberwolves": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network North",
+  "tv": "DAZN is the main home; 15 games free on KARE 11 and Gray stations",
+  "short": "DAZN",
+  "row": "dazn",
+  "stream": "Timberwolves on DAZN",
+  "dazn": true,
+  "free": "15 games (KARE 11)",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVNewsCheck: Grizzlies and Wolves add local TV with DAZN",
+    "url": "https://tvnewscheck.com/programming/article/memphis-grizzlies-dazn-expand-local-tv-reach-with-abc24-minnesota-timberwolves-kare-11-partner-with-dazn-for-simulcasts/"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "pelicans": {
+  "tv": "Gulf Coast Sports & Entertainment Network (14 Gray stations); 20 games also on WVUE FOX 8",
+  "short": "GCSEN",
+  "row": "antenna",
+  "stream": "Pelicans+",
+  "free": "80 games",
+  "sources": [
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "knicks": {
+  "tv": "MSG Network",
+  "short": "MSG",
+  "row": "local",
+  "stream": "MSG+ on DAZN (in-market)",
+  "sources": [
+   {
+    "t": "New York Knicks: 2026-27 schedule",
+    "url": "https://www.nba.com/knicks/schedule"
+   },
+   {
+    "t": "Sports Media Watch: Knicks TV schedule 2026-27",
+    "url": "https://www.sportsmediawatch.com/tv-schedules/nba-tv-schedule/new-york-knicks/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "thunder": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Oklahoma",
+  "tv": "Thunder Gameday Network: KSBI 52 (OKC) and KQCW 19 (Tulsa) on pay TV; 10 games free over the air",
+  "short": "Thunder+ / KSBI",
+  "row": "local",
+  "stream": "Thunder+",
+  "free": "10 games (KSBI, KQCW, KWTV, KOTV)",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "magic": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Florida",
+  "tv": "WRDQ (MagicTV 27), with select games on WFTV 9",
+  "short": "MagicTV 27",
+  "row": "antenna",
+  "stream": "Magic on DAZN",
+  "dazn": true,
+  "free": "Every non-national game",
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "notes": "",
+  "status": "verified"
+ },
+ "76ers": {
+  "tv": "NBC Sports Philadelphia",
+  "short": "NBCS Philly",
+  "row": "local",
+  "stream": "NBC Sports Philadelphia on Peacock (regional add-on)",
+  "sources": [
+   {
+    "t": "Philadelphia 76ers: 2026-27 schedule",
+    "url": "https://www.nba.com/sixers/schedule"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "suns": {
+  "tv": "Arizona's Family: KTVK 3TV and Arizona's Family Sports",
+  "short": "3TV",
+  "row": "antenna",
+  "stream": "Suns+",
+  "free": "74 games",
+  "sources": [
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "trail-blazers": {
+  "tv": "KUNP and the Rip City Television Network (KATU family)",
+  "short": "KUNP / KATU",
+  "row": "antenna",
+  "stream": "BlazerVision",
+  "free": "Local broadcasts (no count posted)",
+  "sources": [
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "kings": {
+  "tv": "NBC Sports California",
+  "short": "NBCS California",
+  "row": "local",
+  "stream": "NBC Sports California on Peacock (regional add-on)",
+  "sources": [
+   {
+    "t": "NBC Sports California: Kings 2026-27 schedule",
+    "url": "https://www.nbcsportsbayarea.com/nba/sacramento-kings/2026-27-schedule-released-dates-times/1956315/"
+   },
+   {
+    "t": "Sacramento Kings: schedule",
+    "url": "http://nba.com/kings/schedule/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "spurs": {
+  "fdsn": true,
+  "prev": "FanDuel Sports Network Southwest",
+  "tv": "DAZN is the exclusive streaming home; 22 games promised free on a local station",
+  "short": "DAZN",
+  "row": "dazn",
+  "stream": "Spurs on DAZN",
+  "dazn": true,
+  "free": "22 games (station not announced)",
+  "unconfirmed": [
+   "Local free-TV station for the 22 games has not been named"
+  ],
+  "sources": [
+   {
+    "t": "CableTV.com: FanDuel Sports Network replacements (Oct 15, 2026)",
+    "url": "https://www.cabletv.com/news/fanduel-sports-network-replacements"
+   },
+   {
+    "t": "KSAT: Spurs announce DAZN as streaming home",
+    "url": "https://www.ksat.com/sports/2026/09/03/san-antonio-spurs-announce-dazn-as-streaming-home-for-non-national-games/"
+   },
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   }
+  ],
+  "checked": "2026-10-17",
+  "notes": "",
+  "status": "partial"
+ },
+ "raptors": {
+  "tv": "No US home market. In Canada, games are split between Sportsnet and TSN",
+  "short": "League Pass (US)",
+  "row": "lp",
+  "stream": "NBA League Pass in the US; Sportsnet+ or TSN app in Canada",
+  "notes": "US fans can watch non-national Raptors games on League Pass.",
+  "sources": [
+   {
+    "t": "Sports Media Watch: Raptors TV schedule 2026-27",
+    "url": "https://www.sportsmediawatch.com/tv-schedules/nba-tv-schedule/toronto-raptors/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "status": "verified"
+ },
+ "jazz": {
+  "tv": "KJZZ 14",
+  "short": "KJZZ 14",
+  "row": "antenna",
+  "stream": "Jazz+",
+  "free": "Local broadcasts (no count posted)",
+  "sources": [
+   {
+    "t": "TVLander: NBA teams on free TV 2026-27 (as of Oct 7, 2026)",
+    "url": "https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ },
+ "wizards": {
+  "tv": "Monumental Sports Network (MNMT)",
+  "short": "MNMT",
+  "row": "local",
+  "stream": "Monumental+",
+  "sources": [
+   {
+    "t": "Monumental Sports: 2026-27 Wizards local TV schedule (Oct 14, 2026)",
+    "url": "https://monumentalsports.com/2026/10/monumental-sports-network-announces-2026-27-washington-wizards-local-tv-radio-schedule-john-walls-return-to-broadcast-team/"
+   },
+   {
+    "t": "CableTV.com: How to watch local NBA games (Oct 12, 2026)",
+    "url": "https://www.cabletv.com/sports/watch-local-nba-games"
+   }
+  ],
+  "checked": "2026-10-17",
+  "unconfirmed": [],
+  "fdsn": false,
+  "free": null,
+  "dazn": false,
+  "notes": "",
+  "status": "verified"
+ }
+}

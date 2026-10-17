@@ -1,0 +1,6 @@
+<div class="checker" id="checker"><h2>Am I blacked out?</h2><p class="s">Your ZIP plus your team. We'll tell you if League Pass blocks it and where to watch instead.</p>
+<form class="f" id="ck" novalidate><label>ZIP code<input id="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="44113" autocomplete="postal-code" required></label>
+<label>Team<select id="cteam"><option value="">My home team</option>{% for t in teams %}<option value="{{ t.slug }}"{% if t.slug == preTeam %} selected{% endif %}>{{ t.full }}</option>{% endfor %}</select></label>
+<button class="btn" type="submit">Check my ZIP</button></form>
+<div class="verdict" id="vd" hidden aria-live="polite"></div>
+<p class="fine">Our ZIP map is approximate. The NBA's <a href="{{ site.blackoutChecker }}" rel="nofollow noopener" target="_blank">League Pass blackout guide</a> is the final word.</p></div>

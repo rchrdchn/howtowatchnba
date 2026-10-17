@@ -1,0 +1,22 @@
+const tv = require('./lib/tv.js');
+const color = require('./lib/color.js');
+module.exports = function (c) {
+  c.addPassthroughCopy({ 'src/assets': 'assets' });
+  ['favicon.svg', '_headers', 'site.webmanifest'].forEach(f => c.addPassthroughCopy('src/' + f));
+  c.addPassthroughCopy('src/*.txt');
+  c.addGlobalData('tv', tv);
+  c.addFilter('safeBg', h => color.safeBg(h));
+  c.addFilter('bestText', (bg, a, b) => color.bestText(bg, [a, b, '#ffffff', '#0f1b2d'].filter(Boolean)));
+  c.addFilter('json', v => JSON.stringify(v).replace(/</g, '\\u003c'));
+  c.addFilter('local', slug => tv.local[slug]);
+  c.addFilter('forTeam', (abbr, n) => tv.forTeam(abbr, n));
+  c.addFilter('teamChannel', (g, abbr) => tv.teamChannel(g, abbr));
+  c.addFilter('grid', games => tv.grid(games));
+  c.addFilter('kind', l => l.row === 'antenna' ? ['FREE TV', ''] : l.row === 'dazn' ? ['DAZN', 'dz'] : l.row === 'lp' ? ['LEAGUE PASS', ''] : ['TEAM NETWORK', 'app']);
+  c.addFilter('longDate', d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }));
+  c.addFilter('etLong', d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' }));
+  c.addFilter('pt', d => tv.time(d, 'America/Los_Angeles'));
+  c.addFilter('sitemapPages', ps => ps.filter(p => p.url && p.url.endsWith('/') && !p.data.noindex).sort((a, b) => a.url === '/' ? -1 : b.url === '/' ? 1 : a.url.localeCompare(b.url)));
+  c.addFilter('isoDate', d => new Date(d).toISOString().slice(0, 10));
+  return { dir: { input: 'src', includes: '_includes', data: '_data', output: '_site' }, templateFormats: ['njk', 'md', '11ty.js'], markdownTemplateEngine: 'njk', htmlTemplateEngine: 'njk' };
+};

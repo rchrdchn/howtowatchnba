@@ -1,0 +1,13 @@
+{% set night = tv.nextNight() %}{% set G = night.games | grid %}
+{% if G %}
+<div class="guide has-list"><div class="tg" style="--n:{{ G.nSlots }}" role="table" aria-label="TV grid for {{ night.label }}, Eastern time">
+<div class="hd" role="columnheader">Channel</div>{% for s in G.slots %}<div class="hd" role="columnheader" style="grid-column:{{ loop.index + 1 }};grid-row:1">{{ s }}</div>{% endfor %}
+{% for r in G.rows %}<div class="ch r-{{ r.id }}" role="rowheader" style="grid-column:1;grid-row:{{ r.r0 }} / span {{ r.lanes }}"><span><i></i>{{ r.label }}</span><small>{{ r.sub }}</small></div>
+<div class="bg" style="grid-column:2 / -1;grid-row:{{ r.r0 }} / span {{ r.lanes }}"></div>
+{% for b in r.blocks %}<a class="b {% if r.id in ['nbc','espn','prime'] %}nat{% elif r.id == 'lp' %}lp{% elif r.id == 'nbatv' %}nbatv{% endif %}" href="/teams/{{ (b.team or b.g.h).slug }}/" style="grid-column:{{ b.s + 2 }} / span {{ G.len }};grid-row:{{ r.r0 + b.lane }};{% if b.team %}--bl:{{ b.team.c1 | safeBg }};--bb:color-mix(in srgb,{{ b.team.c1 }} 10%,#fff){% endif %}">{{ b.title }}<small>{{ b.sub }}</small></a>{% endfor %}
+{% endfor %}</div></div>
+<ul class="glist">{% for g in night.games %}<li class="gl"><span class="t">{{ g.et }} ET · {{ g.pt }} PT</span><b>{{ g.a.name }} at {{ g.h.name }}</b><div class="chips">
+{% if g.nat_ %}<span class="chip nat">Everywhere: {{ g.nat_.label }}</span>{% else %}{% for side in [[g.a, g.al],[g.h, g.hl]] %}{% set ch = g | teamChannel(side[0].abbr) %}<a class="chip {{ ch.kind }}" href="/teams/{{ side[0].slug }}/">{{ side[0].name }} fans: {{ ch.label }}{% if side[1].dazn and ch.kind != 'dazn' %} / DAZN{% endif %}</a>{% endfor %}<span class="chip lp">Everyone else: League Pass</span>{% if g.nbatv %}<span class="chip">NBA TV</span>{% endif %}{% endif %}
+</div></li>{% endfor %}</ul>
+<div class="gfoot"><span>{{ night.label }} · {{ night.games.length }} game{% if night.games.length != 1 %}s{% endif %} · times Eastern</span><span>National games on NBC, Peacock, ESPN, ABC and Prime Video air everywhere and replace local TV.</span><span>Schedule and national TV from ESPN, refreshed nightly. Local channels hand-checked.</span></div>
+{% else %}<p>No games on the schedule right now. Check back soon.</p>{% endif %}

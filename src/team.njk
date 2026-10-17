@@ -1,0 +1,32 @@
+<div class="wrap">
+<p class="crumbs"><a href="/">Home</a> / <a href="/teams/">Teams</a> / {{ t.full }}</p>
+<section class="th">
+<div><div class="k">{{ t.full }} · {{ site.season }}</div><h1>How to watch the <span class="hi">{{ t.name }}</span></h1>
+<p>{% if l.fdsn %}FanDuel Sports Network shut down after 2025-26. {{ t.name }} local games now air on {{ l.tv | replace(";", ".") }}.{% elif t.slug == 'raptors' %}{{ l.tv }}. {{ l.notes }}{% else %}Local games air on {{ l.tv }}. The big ones move to national TV.{% endif %}</p></div>
+<div class="card"><div class="lbl">Local home this season</div><div class="big">{{ l.short }}</div>
+{% if l.status == 'verified' %}<span class="tag ok">Verified {{ l.checked | longDate }}</span>{% else %}<span class="tag unc">Some details unconfirmed</span>{% endif %}
+<p>{% if l.free %}Free games: {{ l.free }}.{% else %}No free local package announced.{% endif %}</p></div>
+</section>
+
+<div class="sec"><h2>The {{ t.name }} channel decoder</h2></div>
+<div class="dec">
+<div class="dc"><span class="n">01 · LOCAL TV</span><h3>{{ l.short }}</h3><p>{{ l.tv }}.</p></div>
+<div class="dc"><span class="n">02 · STREAM</span><h3>{% if l.dazn %}DAZN{% else %}Stream it{% endif %}</h3><p>{{ l.stream }}.{% if l.stream == 'Not confirmed' %} <span class="tag unc">Unconfirmed</span>{% endif %}</p></div>
+<div class="dc"><span class="n">03 · FREE</span><h3>{% if l.free %}Antenna{% else %}National only{% endif %}</h3><p>{% if l.free %}{{ l.free }}.{% else %}No free local games announced. NBC and ABC national games are free with an antenna.{% endif %}</p></div>
+<div class="dc"><span class="n">04 · OUT OF TOWN</span><h3>League Pass</h3><p>{% if t.slug == 'raptors' %}US fans get non-national Raptors games on League Pass.{% else %}Outside the home market, League Pass carries {{ t.name }} games that aren't on national TV.{% endif %}</p></div>
+</div>
+{% if l.unconfirmed.length %}<div class="srcs" style="margin-top:16px"><span class="tag unc">Unconfirmed</span> We couldn't confirm these yet, so treat them with care:<ul class="unclist">{% for u in l.unconfirmed %}<li>{{ u }}</li>{% endfor %}</ul></div>{% endif %}
+
+<div class="sec"><h2>Next {{ t.name }} games</h2></div>
+<div class="games">{% for g in t.abbr | forTeam(8) %}{% set ch = g | teamChannel(t.abbr) %}{% set opp = g.a if g.home == t.abbr else g.h %}<div class="gm"><span class="d">{{ g.dayLabel.slice(0,3) }}<b>{{ g.dayLabel.slice(5) }}</b></span><span><b>{{ "vs" if g.home == t.abbr else "at" }} {{ opp.full }}</b><small>{{ g.et }} ET · {{ g.pt }} PT{% if g.note %} · {{ g.note }}{% endif %}</small></span><span class="chip {{ ch.kind }}">{{ ch.label }}{% if l.dazn and ch.kind != 'nat' and ch.kind != 'dazn' %} + DAZN{% endif %}</span></div>{% else %}<p>No upcoming games on the schedule.</p>{% endfor %}</div>
+<p class="fine">Local channel shown is the team's usual home. Free-TV simulcasts for package teams are listed game by game on the team's site.</p>
+
+<div class="sec"><h2>Blacked out where you live?</h2></div>
+<div style="max-width:620px">{% include "checker.njk" %}</div>
+
+<div class="sec"><h2>Quick answers</h2></div>
+<div class="faq">{% for f in faqs %}<details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>{% endfor %}</div>
+
+<div class="sec"><h2>Sources</h2></div>
+<div class="srcs">Hand-checked {{ l.checked | longDate }}.<ol>{% for s in l.sources %}<li><a href="{{ s.url }}" rel="nofollow noopener">{{ s.t }}</a></li>{% endfor %}</ol></div>
+</div>

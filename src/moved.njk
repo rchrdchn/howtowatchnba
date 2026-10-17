@@ -1,0 +1,24 @@
+---
+layout: base.njk
+permalink: /moved/
+title: "Where Every Team Moved | NBA local TV after FanDuel Sports Network"
+description: "FanDuel Sports Network shut down after 2025-26 and 13 NBA teams needed new local homes. Here's where every one landed for 2026-27, with sources."
+---
+<div class="wrap">
+<p class="crumbs"><a href="/">Home</a> / Where Every Team Moved</p>
+<h1 style="font-size:clamp(36px,5.5vw,64px)">Where Every Team <span class="acc">Moved.</span></h1>
+<p class="lead">FanDuel Sports Network shut down after the 2025-26 season. These 13 teams had to find new local homes: the Hawks, Hornets, Cavaliers, Pistons, Pacers, Clippers, Grizzlies, Heat, Bucks, Timberwolves, Thunder, Magic and Spurs.</p>
+<p class="sub">Most signed one-year deals, because the NBA is working on a central local-TV package for 2027-28. Expect another shake-up next fall. Checked {{ site.localChecked }}.</p>
+{% include "moved.njk" %}
+<div class="sec"><h2>The details</h2></div>
+<div class="tscroll"><table class="tbl"><thead><tr><th>Team</th><th>Before</th><th>Now (local TV)</th><th>Streaming</th><th>Free games</th></tr></thead><tbody>
+{% for t in teams %}{% set l = t.slug | local %}{% if l.fdsn %}<tr><td><span class="sw" style="background:{{ t.c1 }}"></span><a href="/teams/{{ t.slug }}/"><b>{{ t.full }}</b></a></td><td>{{ l.prev }}</td><td>{{ l.tv }}{% for u in l.unconfirmed %}<br><span class="tag unc">Unconfirmed</span> {{ u }}{% endfor %}</td><td>{{ l.stream }}</td><td>{{ l.free or "None announced" }}</td></tr>{% endif %}{% endfor %}
+</tbody></table></div>
+<div class="sec"><h2>The short version</h2></div>
+<div class="dec">
+<div class="dc"><span class="n">DAZN · 8 TEAMS</span><h3>Streaming</h3><p>Hornets, Cavaliers, Pistons, Pacers, Grizzlies, Timberwolves, Magic and Spurs stream local games on DAZN.</p></div>
+<div class="dc"><span class="n">ANTENNA · 6 TEAMS</span><h3>Free TV first</h3><p>Hawks, Pistons, Hornets, Heat, Bucks and Magic made free broadcast TV their main local home.</p></div>
+<div class="dc"><span class="n">THEIR OWN WAY</span><h3>Thunder and Clippers</h3><p>The Thunder built the Thunder Gameday Network and Thunder+. The Clippers brought back ClipperVision, with select games on KTLA.</p></div>
+</div>
+<div class="srcs" style="margin-top:20px">Sources: <ol><li><a href="https://awfulannouncing.com/local-networks/main-street-sports-group-shuttering-13-nba-teams-local-tv.html" rel="nofollow noopener">Awful Announcing: the 13 affected teams (Apr 2, 2026)</a></li><li><a href="https://www.cabletv.com/news/fanduel-sports-network-replacements" rel="nofollow noopener">CableTV.com: where each team went (Oct 15, 2026)</a></li><li><a href="https://read.sportsandcompany.com/p/streamer-carries-8-of-13-nba-teams-that-lost-cable-home" rel="nofollow noopener">Sports &amp; Co: DAZN carries 8 of the 13</a></li><li><a href="https://tvlander.com/stories/nba-nhl-mlb-teams-on-free-antenna-tv-2026-27" rel="nofollow noopener">TVLander: free-TV packages (Oct 7, 2026)</a></li></ol>Each team page lists its own sources.</div>
+</div>
