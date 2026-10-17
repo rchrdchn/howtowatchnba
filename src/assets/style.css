@@ -219,3 +219,7 @@ footer.foot h3{font:700 11px "Space Mono",monospace;text-transform:uppercase;let
 @media(max-width:560px){.emobtns .btn,.emobtns .btn2{flex:1 1 auto}}
 @media(max-width:860px){.hero{grid-template-columns:1fr}.th{grid-template-columns:1fr;padding:24px 18px}.f{grid-template-columns:1fr}}
 .band .soon{flex:1 1 300px;margin:0;font-weight:700;font-size:17px;line-height:1.4}.band .soon .tag{margin-right:6px;border:0}
+/* Selects: custom chevron 16px inside the right edge (native one hugs the border on macOS Chrome/Brave). Kept after .f input,.f select so its background shorthand can't wipe the image. */
+select,.f select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5' fill='none' stroke='%230f1b2d' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:14px 9px;padding-right:44px;text-overflow:ellipsis;cursor:pointer}
+select::-ms-expand{display:none}
+.f select{min-height:55px}
