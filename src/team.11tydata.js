@@ -15,11 +15,8 @@ module.exports = {
     l: d => local[d.t.slug],
     faqs: d => faq(d.t, local[d.t.slug]),
     preTeam: d => d.t.slug,
-    title: d => `How to watch the ${d.t.full} 2026-27 | Local TV, streaming & free games`,
-    description: d => { const l = local[d.t.slug]; return `Where to watch the ${d.t.full} in 2026-27: ${l.tv.split(';')[0]}. Streaming: ${l.stream}. Next games, channels and League Pass blackouts.`.slice(0, 300); },
-    teamStyle: d => { const c1 = safeBg(d.t.c1), c2 = d.t.c2; return `--c1:${c1};--c2:${c2};--on:#ffffff;--hiFg:${bestText(c2, [c1, '#0f1b2d', '#ffffff'])}`; },
-    schema: d => ({ '@context': 'https://schema.org', '@graph': [
-      { '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Teams', '/teams/'], [d.t.full, `/teams/${d.t.slug}/`]].map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[0], item: 'https://howtowatchnba.com' + x[1] })) },
-      { '@type': 'FAQPage', mainEntity: faq(d.t, local[d.t.slug]).map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] })
+    title: d => `How to Watch the ${d.t.full} (2026-27): TV & Streaming`,
+    description: d => { const l = local[d.t.slug]; return `Where to watch the ${d.t.full} in 2026-27: ${l.tv.split(';')[0]}. Streaming: ${l.stream}. Next games, channels and League Pass blackouts.`; },
+    teamStyle: d => { const c1 = safeBg(d.t.c1), c2 = d.t.c2; return `--c1:${c1};--c2:${c2};--on:#ffffff;--hiFg:${bestText(c2, [c1, '#0f1b2d', '#ffffff'])}`; }
   }
 };

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 permalink: /privacy/
-title: "Privacy | How to Watch NBA"
+title: "Privacy Policy | How to Watch NBA"
 description: "What we collect (very little) and why."
 ---
 <div class="wrap prose">
@@ -9,6 +9,8 @@ description: "What we collect (very little) and why."
 <p class="crumbs"><a href="/">Home</a> / Privacy</p>
 
 # Privacy
+
+{% updated %}
 
 - **Analytics.** We plan to use Cloudflare Web Analytics, which doesn't use cookies or track you across sites.
 - **Blackout checker.** Your ZIP code is checked in your browser and never sent to us.

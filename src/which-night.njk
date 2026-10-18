@@ -1,13 +1,14 @@
 ---
 layout: base.njk
 permalink: /which-night/
-title: "Which NBA night is on which network? 2026-27 national TV by day"
+title: "Which NBA Night Is on Which Network? 2026-27 National TV"
 description: "Monday Peacock, Tuesday NBC, Wednesday ESPN, Thursday Prime Video. The 2026-27 NBA national TV pattern by night, and what it means for your local channel."
 ---
 {% set night = tv.nextNight() %}{% set today = night.label.slice(0,3) | upper %}
 <div class="wrap">
 <p class="crumbs"><a href="/">Home</a> / Which night</p>
 <h1 style="font-size:clamp(36px,5.5vw,64px)">Which night is <span class="acc">whose.</span></h1>
+{% updated %}
 <p class="lead">The NBA's national TV deal splits the week between NBC/Peacock, ESPN/ABC and Prime Video. When your team plays a national game, it's on that network instead of your local channel.</p>
 {% include "week.njk" %}
 <div class="sec"><h2>Good to know</h2></div>
@@ -17,4 +18,5 @@ description: "Monday Peacock, Tuesday NBC, Wednesday ESPN, Thursday Prime Video.
 <div class="dc"><span class="n">NOT EXCLUSIVE</span><h3>NBA TV</h3><p>NBA TV games still air on the teams' local channels in their home markets.</p></div>
 </div>
 <div class="srcs" style="margin-top:20px">Sources: <ol><li><a href="https://www.nba.com/news/how-to-watch-games-2026-27-season" rel="nofollow noopener">NBA.com: how to watch games in 2026-27</a></li><li><a href="https://www.nba.com/news/2026-27-nba-regular-season-schedule" rel="nofollow noopener">NBA.com: 2026-27 schedule and national TV</a></li><li><a href="https://www.nbcsports.com/pressbox/press-releases/nbc-sports-announces-its-complete-2026-27-nba-regular-season-schedule-featuring-100-games-across-nbc-peacock-and-nbcsn" rel="nofollow noopener">NBC Sports: 100-game 2026-27 schedule</a></li></ol></div>
+{% include "faqblock.njk" %}
 </div>

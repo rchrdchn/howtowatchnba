@@ -1,16 +1,19 @@
 ---
 layout: base.njk
 permalink: /tonight/
-title: "NBA games tonight on TV | Channel grid for every game"
+list: tonight
+title: "NBA Games Tonight on TV: Channel Grid for Every Game"
 description: "Tonight's NBA games on one TV grid: national channels, free antenna stations, DAZN, team networks and League Pass, with tip times in Eastern and Pacific."
 ---
 {% set night = tv.nextNight() %}
 <div class="wrap">
 <p class="crumbs"><a href="/">Home</a> / Tonight</p>
 <h1 style="font-size:clamp(36px,5.5vw,64px)">What's on <span class="acc">tonight.</span></h1>
+{% updated %}
 <p class="lead">{{ night.label }}. Find your team's row. National games air everywhere. Local games air on each team's own channel, and League Pass carries them for everyone outside both markets.</p>
 {% include "tonight.njk" %}
 {% set later = tv.upcomingAll() %}
 <div class="sec"><h2>Coming up</h2></div>
 <div class="games">{% set shown = 0 %}{% for g in later %}{% if g.day != night.day and shown < 16 %}{% set shown = shown + 1 %}<div class="gm"><span class="d">{{ g.dayLabel }}<b>{{ g.et }}</b></span><span><b>{{ g.a.name }} at {{ g.h.name }}</b><small>{{ g.et }} ET · {{ g.pt }} PT · {{ g.venue }}</small></span>{% if g.nat_ %}<span class="chip nat">{{ g.nat_.label }}</span>{% else %}<span class="chip local">{{ g.al.short }} / {{ g.hl.short }}</span>{% endif %}</div>{% endif %}{% endfor %}</div>
+{% include "faqblock.njk" %}
 </div>

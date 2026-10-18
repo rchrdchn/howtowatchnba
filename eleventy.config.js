@@ -18,6 +18,38 @@ module.exports = function (c) {
   c.addFilter('pt', d => tv.time(d, 'America/Los_Angeles'));
   c.addFilter('sitemapPages', ps => ps.filter(p => p.url && p.url.endsWith('/') && !p.data.noindex).sort((a, b) => a.url === '/' ? -1 : b.url === '/' ? 1 : a.url.localeCompare(b.url)));
   c.addFilter('isoDate', d => new Date(d).toISOString().slice(0, 10));
+
+  // SEO helpers shared with the soccer and Races Near sites (lib/seo.js).
+  const seo = require('./lib/seo.js'), pages = require('./lib/pages.js'), site = require('./src/_data/site.json');
+  const { ogKey } = require('./lib/og.js');
+  c.addFilter('seoTitle', s => seo.seoTitle(s));
+  c.addFilter('seoDesc', s => seo.seoDesc(s));
+  c.addFilter('ogImage', url => `${site.url}/og/${ogKey(url)}.png`);
+  c.addFilter('xml', s => seo.plain(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+  c.addFilter('sortByChecked', ts => [...ts].sort((a, b) => (tv.local[b.slug].checked || '').localeCompare(tv.local[a.slug].checked || '') || a.full.localeCompare(b.full)));
+  c.addFilter('rfc822', d => new Date(typeof d === 'string' && d.length === 10 ? d + 'T12:00:00Z' : d).toUTCString());
+  // Visible "Updated" date; scripts/postbuild.mjs fills it (and dateModified, sitemap lastmod) from lastmod.json.
+  c.addShortcode('updated', () => '<p class="upd">Updated <time datetime="__LASTMOD_ISO__">__LASTMOD__</time></p>');
+  // One JSON-LD graph per page: Organization + WebSite by @id, the page node with dateModified, ItemList on hubs,
+  // FAQPage where a FAQ is shown, SportsTeam + next SportsEvents on team pages, AboutPage on /about/.
+  c.addFilter('pageGraph', d => {
+    const url = site.url + d.url, og = `${site.url}/og/${ogKey(d.url)}.png`;
+    const org = { '@type': 'Organization', '@id': site.url + '/#org', name: site.name, url: site.url + '/', logo: { '@type': 'ImageObject', url: site.url + '/logo.png', width: 512, height: 512 }, email: site.email, sameAs: [site.newsletterUrl].filter(Boolean) };
+    const web = { '@type': 'WebSite', '@id': site.url + '/#website', name: site.name, url: site.url + '/', publisher: { '@id': org['@id'] }, inLanguage: 'en-US' };
+    const items = d.list === 'teams' ? pages.teamItems() : d.list === 'moved' ? pages.teamItems(tv.teams.filter(t => tv.local[t.slug].fdsn).map(t => t.slug)) : d.list === 'tonight' ? pages.tonightItems() : null;
+    const pg = { '@type': d.kind || (items ? 'CollectionPage' : 'WebPage'), '@id': url + '#webpage', url, name: seo.seoTitle(d.title), description: seo.seoDesc(d.description), isPartOf: { '@id': web['@id'] }, inLanguage: 'en-US', primaryImageOfPage: { '@type': 'ImageObject', url: og }, dateModified: '__LASTMOD_ISO__' };
+    if (d.kind === 'AboutPage') pg.about = { '@id': org['@id'] };
+    if (items && items.length) pg.mainEntity = { '@type': 'ItemList', numberOfItems: items.length, itemListElement: items };
+    const g = [org, web, pg];
+    if (d.t) { const tn = pages.teamNodes(d.t); pg.about = { '@id': tn[0]['@id'] }; g.push(...tn); }
+    if (d.faqs && d.faqs.length) g.push({ '@type': 'FAQPage', '@id': url + '#faq', mainEntity: d.faqs.map(x => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) });
+    return JSON.stringify({ '@context': 'https://schema.org', '@graph': g }).replace(/</g, '\\u003c');
+  });
+  c.addTransform('crumbsLd', function (html) {
+    if (!(this.page.outputPath || '').endsWith('.html')) return html;
+    const ld = seo.crumbsLd(html, this.page.url, site.url);
+    return ld ? html.replace('</head>', ld + '</head>') : html;
+  });
   // Email CTA with fallbacks for visitors whose browser has no default mail app: mailto button, Copy email, visible address, Gmail/Outlook web compose.
   c.addShortcode('emailOptions', (subject = '', label = 'Email us') => {
     const to = 'hello@howtowatchnba.com', e = encodeURIComponent, q = s => s.replace(/&/g, '&amp;');

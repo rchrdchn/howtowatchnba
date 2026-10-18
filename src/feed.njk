@@ -1,0 +1,12 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>{{ site.name }}: local TV checks</title><link>{{ site.url }}/</link><atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+<description>Each NBA team's 2026-27 local TV and streaming home, newest check first.</description><language>en-us</language>
+{%- for t in teams | sortByChecked %}{% set l = t.slug | local %}
+<item><title>{{ (t.full + " local TV: " + l.short) | xml | safe }}</title><link>{{ site.url }}/teams/{{ t.slug }}/</link><guid isPermaLink="false">{{ site.url }}/teams/{{ t.slug }}/#{{ l.checked }}</guid><pubDate>{{ l.checked | rfc822 }}</pubDate><description>{{ ("Local TV: " + l.tv + ". Streaming: " + l.stream + "." + (" Free games: " + l.free + "." if l.free else "") + (" Status: some details unconfirmed." if l.status != "verified" else " Status: verified.")) | xml | safe }}</description></item>
+{%- endfor %}
+</channel></rss>

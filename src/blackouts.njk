@@ -1,12 +1,13 @@
 ---
 layout: base.njk
 permalink: /blackouts/
-title: "NBA League Pass blackout checker by ZIP | 2026-27"
+title: "NBA League Pass Blackout Checker by ZIP (2026-27)"
 description: "Type your ZIP and team to see if NBA League Pass blacks out the game where you live, and the cheapest legal way to watch it instead."
 ---
 <div class="wrap">
 <p class="crumbs"><a href="/">Home</a> / Blackout checker</p>
 <section class="hero"><div><h1 style="font-size:clamp(36px,5.5vw,64px)">Blacked out? <span class="hi">Fix that.</span></h1>
+{% updated %}
 <p class="lead">League Pass hides two kinds of games: your local team's games, and every national game. Here's how to tell which one you're hitting.</p></div>
 {% include "checker.njk" %}</section>
 <div class="sec"><h2>How League Pass blackouts work</h2></div>
@@ -16,4 +17,5 @@ description: "Type your ZIP and team to see if NBA League Pass blacks out the ga
 <div class="dc"><span class="n">RULE 3</span><h3>Everything else</h3><p>Out-of-market games that aren't national are on League Pass. That's most of the schedule for fans of a team in another city.</p></div>
 </div>
 <p class="fine">Some areas sit inside more than one team's market. Our ZIP map is a hand-built approximation; the <a href="{{ site.blackoutChecker }}" rel="nofollow noopener">NBA's blackout guide</a> is the final word.</p>
+{% include "faqblock.njk" %}
 </div>

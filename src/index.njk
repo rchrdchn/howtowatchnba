@@ -1,13 +1,13 @@
 ---
 layout: base.njk
-title: "How to Watch NBA 2026-27 | Where's my team on TV this year?"
+title: "How to Watch the NBA in 2026-27: Every Team's TV Channel"
 description: "13 NBA teams lost their TV channel. Find your team's local channel for 2026-27, check League Pass blackouts by ZIP, and see tonight's games on one TV grid."
-schema: {"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"How to Watch NBA","url":"https://howtowatchnba.com/"},{"@type":"Organization","name":"How to Watch NBA","url":"https://howtowatchnba.com/","email":"hello@howtowatchnba.com"}]}
 ---
 {% set night = tv.nextNight() %}{% set today = night.label.slice(0,3) | upper %}
 <div class="wrap">
 <section class="hero">
 <div><h1>Your team moved <span class="acc">channels.</span><br><span class="hi">Here's where.</span></h1>
+{% updated %}
 <p class="lead">13 teams lost FanDuel Sports Network this summer. National games are split across five services. We track every team's local channel by hand, so you don't have to hunt.</p>
 <ul class="facts"><li><b>6</b> teams moved to free antenna TV</li><li><b>8</b> stream on DAZN</li><li>Season tips off <b>Oct 20</b></li></ul></div>
 {% include "checker.njk" %}
@@ -28,4 +28,5 @@ schema: {"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Ho
 <div class="sec"><h2>Which night is whose</h2><a class="more" href="/which-night/">Details →</a></div>
 <p class="sub">National games replace local TV for that night. Here's the weekly pattern for 2026-27.</p>
 {% include "week.njk" %}
+{% include "faqblock.njk" %}
 </div>

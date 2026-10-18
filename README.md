@@ -32,11 +32,16 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 ├── .github/workflows/nightly.yml  Nightly schedule refresh, build, check, commit, IndexNow (2:15 AM PT)
 ├── lib/
 │   ├── tv.js                      Channel logic: national windows from ESPN + local channels, tonight grid, times
+│   ├── pages.js                   Data-driven FAQs, ItemLists, SportsTeam and SportsEvent schema
+│   ├── seo.js                     Title (≤65) and description (≤160) helpers, BreadcrumbList from crumbs (shared)
+│   ├── og.js                      Which share image a URL uses
 │   └── color.js                   WCAG helpers: darken team colors just enough for AA contrast
 ├── scripts/
 │   ├── fetch-schedule.mjs         ESPN scoreboard feed to src/_data/schedule.json (npm run schedule)
 │   ├── check.mjs                  Internal link check over _site (npm run check)
-│   └── indexnow.mjs               Pings IndexNow with every sitemap URL (npm run indexnow)
+│   ├── og.mjs                     Share images to _site/og/ and /logo.png (runs in npm run build)
+│   ├── postbuild.mjs              Head checks, real lastmod from content hashes, .indexnow.json (runs in npm run build)
+│   └── indexnow.mjs               Pings IndexNow with changed URLs (npm run indexnow; --all for every URL)
 ├── src/
 │   ├── _data/
 │   │   ├── schedule.json          Generated season schedule with national TV (do not edit by hand)
@@ -61,9 +66,12 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 │   ├── blackouts.njk              /blackouts/ League Pass blackout checker
 │   ├── markets.11ty.js            Builds /assets/markets.json for the in-browser checker
 │   ├── about.md, advertise.md, contact.md, privacy.md, 404.njk
+│   ├── index/tonight/blackouts/which-night.11tydata.js  Data-driven FAQs for those pages
+│   ├── feed.njk, llms.11ty.js     /feed.xml (local TV checks) and /llms.txt
 │   ├── sitemap.njk, robots.txt, site.webmanifest, favicon.svg
 │   ├── _headers                   Security and font caching headers
 │   └── <key>.txt                  IndexNow key file
+├── lastmod.json                   Content hash and last-changed time per URL (committed by the nightly job)
 └── eleventy.config.js             Filters (local, forTeam, grid, pt, safeBg, ...) and passthrough copy
 ```
 
@@ -87,8 +95,8 @@ National exclusives are NBC, NBCSN, Peacock, ESPN, ABC and Prime Video; those re
 `.github/workflows/nightly.yml` runs at 09:15 UTC (2:15 AM PDT, 1:15 AM PST) and on demand:
 
 1. `npm ci`, `npm run schedule`, `npm run build`, `npm run check`
-2. Commits `src/_data` to `main` if anything changed. The push deploys on Cloudflare Pages, and "tonight" rolls over to the new day.
-3. Waits for the new deploy (polls the IndexNow key file for up to 10 minutes), then runs `npm run indexnow`.
+2. Commits `src/_data` and `lastmod.json` to `main` if anything changed. The push deploys on Cloudflare Pages, and "tonight" rolls over to the new day.
+3. Waits until the live sitemap shows this build's lastmod time (up to 10 minutes), then pings IndexNow with only the new, changed or removed URLs.
 
 Safeguards:
 
@@ -147,10 +155,13 @@ Preview another night: `BUILD_NOW=2026-10-21T16:00:00Z npm run build`.
 
 ## SEO
 
-- Canonical URL, title and description on every page (`base.njk`).
-- Structured data: `Organization` and `WebSite` site-wide; team pages carry FAQ content from `team.11tydata.js`.
-- `/sitemap.xml` lists every page including all 30 team pages, referenced from `robots.txt`.
-- **IndexNow:** `npm run indexnow` after a deploy (the nightly job does it automatically). The key name is `indexNowKey` in `site.json` and the file is `src/<key>.txt`.
+- **Titles and descriptions** go through `lib/seo.js`: titles 65 characters or less, descriptions 160 or less, entities decoded once.
+- **Build checks** (`scripts/postbuild.mjs`): the build fails on double-escaped entities in `<head>`, long titles or descriptions, or a `dateModified` without a visible Updated line.
+- **Real lastmod:** each page's title, description and main content are hashed. Only pages whose hash changed get a new time in `lastmod.json`. That time feeds the sitemap `<lastmod>`, the visible "Updated" line under each H1 and `dateModified` in JSON-LD, so all three match.
+- **Structured data:** one graph per page with `Organization`, `WebSite` and the page node. Team pages add `SportsTeam` and the next five games as `SportsEvent` with the TV channel. `/teams/`, `/moved/` and `/tonight/` add an `ItemList`. FAQs (home, tonight, blackouts, which-night, team pages) are visible and marked up as `FAQPage`. Breadcrumbs come from the `crumbs` line.
+- **Share images:** 1200x630 cards per team and section in `/og/`, built by `scripts/og.mjs` with sharp.
+- **AI search:** `/llms.txt` and `/feed.xml` rebuild with every deploy. `robots.txt` allows every crawler and names the main search and AI bots explicitly.
+- **IndexNow:** the nightly job pings only changed URLs. `npm run indexnow -- --all` sends the full sitemap. The key name is `indexNowKey` in `site.json` and the file is `src/<key>.txt`.
 - **Google Search Console:** owned by the site owner. Resubmit `/sitemap.xml` after big changes.
 
 ## Newsletter

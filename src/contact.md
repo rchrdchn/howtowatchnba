@@ -10,6 +10,8 @@ description: "Report a channel change, ask a question or ask about advertising."
 
 # Contact
 
+{% updated %}
+
 <p class="lead">Email <a href="mailto:{{ site.email }}">{{ site.email }}</a>. We read everything.</p>
 
 {% emailOptions "", "Email us →" %}

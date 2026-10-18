@@ -1,10 +1,10 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><script>document.documentElement.classList.add("js")</script>
-<title>{{ title }}</title><meta name="description" content="{{ description }}"><link rel="canonical" href="{{ site.url }}{{ page.url }}"><meta name="theme-color" content="#ff4f5e">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/site.webmanifest">
+{% set st = title | seoTitle %}{% set sd = description | seoDesc %}{% set ogimg = page.url | ogImage %}<title>{{ st }}</title><meta name="description" content="{{ sd }}"><link rel="canonical" href="{{ site.url }}{{ page.url }}"><meta name="theme-color" content="#ff4f5e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/site.webmanifest"><link rel="alternate" type="application/rss+xml" title="{{ site.name }}: local TV checks" href="/feed.xml"><link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
-<meta property="og:site_name" content="{{ site.name }}"><meta property="og:title" content="{{ title }}"><meta property="og:description" content="{{ description }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta name="twitter:card" content="summary">
-{% if noindex %}<meta name="robots" content="noindex">{% endif %}
-{% if schema %}<script type="application/ld+json">{{ schema | json | safe }}</script>{% endif %}
+<meta property="og:site_name" content="{{ site.name }}"><meta property="og:title" content="{{ st }}"><meta property="og:description" content="{{ sd }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta property="og:image" content="{{ ogimg }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{{ st }}"><meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ st }}"><meta name="twitter:description" content="{{ sd }}"><meta name="twitter:image" content="{{ ogimg }}">
+{% if noindex %}<meta name="robots" content="noindex">{% else %}<script type="application/ld+json">{{ { url: page.url, title: title, description: description, list: list, kind: kind, faqs: faqs, t: t if (t and t.abbr) else null } | pageGraph | safe }}</script>{% endif %}
 <link rel="stylesheet" href="/assets/style.css?v={{ build.v }}">
 {% if teamStyle %}<style>:root{ {{ teamStyle | safe }} }</style>{% endif %}
 </head><body><a class="skip" href="#main">Skip to content</a>

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 permalink: /advertise/
-title: "Advertise | Sponsor How to Watch NBA"
+title: "Advertise on How to Watch NBA: Newsletter and Banners"
 description: "Sponsor the weekly newsletter, place a banner on team pages, or sponsor the tonight grid. Reach NBA fans at the moment they decide how to watch. Email for launch rates."
 ---
 <div class="wrap prose">
@@ -9,6 +9,8 @@ description: "Sponsor the weekly newsletter, place a banner on team pages, or sp
 <p class="crumbs"><a href="/">Home</a> / Advertise</p>
 
 # Advertise with us
+
+{% updated %}
 
 <p class="lead">Reach NBA fans at the exact moment they decide how to watch: which streaming service to buy, whether to get an antenna, which game to plan the night around. Placements are open now at launch pricing.</p>
 

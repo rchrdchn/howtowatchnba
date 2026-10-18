@@ -223,3 +223,5 @@ footer.foot h3{font:700 11px "Space Mono",monospace;text-transform:uppercase;let
 select,.f select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5' fill='none' stroke='%230f1b2d' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:14px 9px;padding-right:44px;text-overflow:ellipsis;cursor:pointer}
 select::-ms-expand{display:none}
 .f select{min-height:55px}
+.upd{font:700 12px "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:8px 0 12px}.th .upd{color:var(--on,#fff);opacity:.85}
+.th p.upd{font-size:12px;margin:10px 0 8px}

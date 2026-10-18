@@ -1,7 +1,7 @@
 <div class="wrap">
 <p class="crumbs"><a href="/">Home</a> / <a href="/teams/">Teams</a> / {{ t.full }}</p>
 <section class="th">
-<div><div class="k">{{ t.full }} · {{ site.season }}</div><h1>How to watch the <span class="hi">{{ t.name }}</span></h1>
+<div><div class="k">{{ t.full }} · {{ site.season }}</div><h1>How to watch the <span class="hi">{{ t.name }}</span></h1>{% updated %}
 <p>{% if l.fdsn %}FanDuel Sports Network shut down after 2025-26. {{ t.name }} local games now air on {{ l.tv | replace(";", ".") }}.{% elif t.slug == 'raptors' %}{{ l.tv }}. {{ l.notes }}{% else %}Local games air on {{ l.tv }}. The big ones move to national TV.{% endif %}</p></div>
 <div class="card"><div class="lbl">Local home this season</div><div class="big">{{ l.short }}</div>
 {% if l.status == 'verified' %}<span class="tag ok">Verified {{ l.checked | longDate }}</span>{% else %}<span class="tag unc">Some details unconfirmed</span>{% endif %}
