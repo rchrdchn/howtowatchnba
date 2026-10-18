@@ -1,0 +1,69 @@
+---
+layout: base.njk
+permalink: /tools/cheapest-way-to-watch-your-team/
+title: "Cheapest Way to Watch Your NBA Team (2026-27): Cost Calculator"
+description: "Peacock is $12.99/mo for NBC games and ESPN Unlimited $31.99/mo for ESPN and ABC. Pick your team and market to see what you need and what it costs."
+---
+<div class="wrap tc">
+<p class="crumbs"><a href="/">Home</a> / Cheapest way to watch your team</p>
+<div class="k">Free tool · Prices checked {{ tool.checked }}</div>
+<h1>Cheapest way to watch your <span class="hi">team</span></h1>
+{% updated %}
+<p class="lead"><strong>No single service has every NBA game in 2026-27. Local games air on your team's local channel ({{ tool.antenna.length }} teams are free with an antenna), NBC and Peacock games need Peacock Premium ({{ tool.pk }}/mo), ESPN and ABC games need ESPN Unlimited ({{ tool.es }}/mo), and Prime Video has {{ tool.lg.prime }} games of its own.</strong> Pick your team and where you live to see your cheapest combo.</p>
+
+<div class="tc-grid">
+<form class="tc-form" id="tcf" novalidate>
+<noscript><p class="fine">The calculator needs JavaScript. The <a href="#by-team">team table</a> below works without it.</p></noscript>
+<fieldset><legend>1. Your team</legend>
+<label class="tc-l" for="tct">Team</label>
+<select id="tct" name="team"><option value="">Pick your team</option>{% for t in tool.teams | sort(false, false, 'full') %}<option value="{{ t.slug }}">{{ t.full }}</option>{% endfor %}</select>
+</fieldset>
+<fieldset><legend>2. Where you live</legend>
+<div class="tc-mode" role="radiogroup" aria-label="Where you live"><label><input type="radio" name="mk" value="in" checked> In the team's home area</label><label><input type="radio" name="mk" value="out"> Somewhere else in the US</label></div>
+<label class="tc-l" for="tcz">Or type your ZIP <small>(optional, sets the option above)</small></label>
+<input id="tcz" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="90012" autocomplete="postal-code">
+<p class="tc-zipr" id="tczr" aria-live="polite"></p>
+</fieldset>
+<fieldset><legend>3. Which games</legend>
+<label class="tc-c"><input type="checkbox" id="g-loc" checked> <span id="g-loc-t">Local games</span></label>
+<label class="tc-c"><input type="checkbox" id="g-nbc" checked> <span id="g-nbc-t">NBC and Peacock games</span></label>
+<label class="tc-c"><input type="checkbox" id="g-espn" checked> <span id="g-espn-t">ESPN and ABC games</span></label>
+<label class="tc-c"><input type="checkbox" id="g-prime" checked> <span id="g-prime-t">Prime Video games</span></label>
+</fieldset>
+</form>
+
+<section class="tc-out" aria-live="polite" aria-labelledby="tcoh">
+<h2 id="tcoh" class="tc-h">Pick your team</h2>
+<div id="tcr"><p class="fine">Choose a team to see each channel you need, how many of its games are on each, and the monthly and season cost from our checked prices.</p></div>
+</section>
+</div>
+
+<section id="by-team" aria-labelledby="bth"><div class="sec"><h2 id="bth">Where each team's games are, 2026-27</h2></div>
+<div class="tc-tw"><table class="tc-t"><caption>Regular-season games by channel from the NBA schedule. Local = games not on NBC, Peacock, ESPN, ABC or Prime Video.</caption>
+<thead><tr><th scope="col">Team</th><th scope="col">Local channel</th><th scope="col">Local</th><th scope="col">NBC / Peacock</th><th scope="col">ESPN / ABC</th><th scope="col">Prime Video</th></tr></thead>
+<tbody>{% for t in tool.teams | sort(false, false, 'full') %}<tr><th scope="row"><a href="/teams/{{ t.slug }}/">{{ t.full }}</a></th><td>{{ t.ch }}{% if t.row == 'antenna' %} <small class="free">Free with antenna</small>{% endif %}</td><td>{{ t.c.local }}</td><td>{{ t.c.nbc }}</td><td>{{ t.c.espn }}</td><td>{{ t.c.prime }}</td></tr>{% endfor %}</tbody></table></div></section>
+
+<section aria-labelledby="pch"><div class="sec"><h2 id="pch">What does each service cost?</h2></div>
+<div class="tc-tw"><table class="tc-t tc-p"><caption>Checked {{ tool.checked }}. Season = {{ tool.months }} months (October to April), or the yearly plan if cheaper.</caption>
+<thead><tr><th scope="col">Service</th><th scope="col">Games</th><th scope="col">Monthly</th><th scope="col">Yearly</th></tr></thead>
+<tbody>
+<tr><th scope="row">Free antenna</th><td>{{ tool.antenna.length }} teams' local games, {{ tool.lg.nbcOta }} NBC and {{ tool.lg.abc }} ABC games</td><td>Free</td><td>Free</td></tr>
+<tr><th scope="row">Peacock Premium</th><td>{{ tool.lg.nbc }} NBC, NBCSN and Peacock games</td><td>{{ tool.pk }}</td><td>{{ tool.pkA }}</td></tr>
+<tr><th scope="row">ESPN Unlimited</th><td>{{ tool.lg.espn }} ESPN and ABC games</td><td>{{ tool.es }}</td><td>{{ tool.esA }}</td></tr>
+<tr><th scope="row">Prime Video</th><td>{{ tool.lg.prime }} games</td><td colspan="2">Price not in our data yet</td></tr>
+<tr><th scope="row">DAZN, team apps, local sports networks</th><td>Local games, in your home area</td><td colspan="2">Price not in our data yet</td></tr>
+<tr><th scope="row">NBA League Pass</th><td>Out-of-market games not on national TV</td><td colspan="2">Price not in our data yet</td></tr>
+</tbody></table></div>
+<p class="fine">We only show prices we have checked on the provider's own price page. Game counts include games with both teams set (NBA Cup knockout games are added once they are drawn).</p></section>
+
+<section aria-labelledby="hwh"><div class="sec"><h2 id="hwh">How does the calculator work?</h2></div>
+<div class="tc-prose"><p>Games on NBC, Peacock, NBCSN, ESPN, ABC and Prime Video are national exclusives, so your local channel does not show them. Every other game airs on your team's local channel in its home area, and on League Pass everywhere else. NBA TV games still air locally, so they need no extra service.</p>
+<p><strong>Season cost</strong> = monthly price × months, or the yearly plan when that is cheaper. Services without a checked price are listed but left out of the total.</p></div></section>
+
+{% include "faqblock.njk" %}
+<section class="tc-nl" aria-labelledby="tnh"><h2 id="tnh">Channels change. We will tell you.</h2><p>One short email a week with your team's games and exactly where each one airs, including any channel moves. Free.</p><a class="btn" href="{{ site.newsletterUrl }}" target="_blank" rel="noopener">Subscribe free →</a></section>
+<p class="fine">Blacked out? Try the <a href="/blackouts/">League Pass blackout checker</a>. Changed channels: <a href="/moved/">where every team moved</a>.</p>
+</div>
+<script type="application/json" id="tcd">{{ tool.json | json | safe }}</script>
+<script defer src="/assets/team-cost.js?v={{ build.v }}"></script>
+<script type="application/ld+json">{{ schema | json | safe }}</script>

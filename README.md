@@ -46,6 +46,7 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 │   ├── _data/
 │   │   ├── schedule.json          Generated season schedule with national TV (do not edit by hand)
 │   │   ├── localTv.json           Hand-checked local TV for all 30 teams
+│   │   ├── prices.json            Checked prices only (Peacock Premium, ESPN Unlimited), used by the cheapest-way tool
 │   │   ├── teams.json             Names, ESPN abbreviations, slugs, brand colors
 │   │   ├── zipMarkets.json        3-digit ZIP prefix to home team(s), for the blackout checker
 │   │   ├── week.json              The weekly national TV pattern (Mon to Sun)
@@ -64,6 +65,7 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 │   ├── moved.njk                  /moved/ where every team's local TV went
 │   ├── which-night.njk            /which-night/ national TV by night
 │   ├── blackouts.njk              /blackouts/ League Pass blackout checker
+│   ├── tools/                     Free tools: cheapest-way-to-watch-your-team.njk + .11tydata.js (see Free tools)
 │   ├── markets.11ty.js            Builds /assets/markets.json for the in-browser checker
 │   ├── about.md, advertise.md, contact.md, privacy.md, 404.njk
 │   ├── index/tonight/blackouts/which-night.11tydata.js  Data-driven FAQs for those pages
@@ -83,6 +85,7 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 |---|---|---|
 | `schedule.json` | ESPN's public scoreboard feed (unofficial, no license). One request per day of the season, about 1,200 games. | Nightly, automatic |
 | `localTv.json` | Team announcements, station releases, trade press | By hand, weekly |
+| `prices.json` | Provider price pages (same figures as the soccer site's `services.json`) | By hand, with the soccer price check |
 | `zipMarkets.json` | Hand-built approximation of team markets | Rarely |
 | `week.json` | National TV deals | When the pattern changes |
 
@@ -130,6 +133,17 @@ description: "One or two sentences for search results."
 ```
 
 Add it to the nav or footer in `base.njk` if needed. The sitemap picks up every page that ends in `/`.
+
+## Free tools
+
+### Cheapest way to watch your team: `/tools/cheapest-way-to-watch-your-team/`
+
+- **What it does:** pick a team, say whether you live in its home area (or type a ZIP, which sets that using the approximate `zipMarkets.json` map), and tick local, NBC/Peacock, ESPN/ABC and Prime Video games. It lists each service with how many of that team's games it carries, monthly and season cost, and how many games are free with an antenna.
+- **Data:** game counts per team from `schedule.json` (NBC, NBCSN and Peacock = Peacock; ESPN, ESPN2 and ABC = ESPN Unlimited; Prime Video; everything else is local, and NBA TV games still air locally). Local channel, stream and free-TV details from `localTv.json`. Season length = the months the team's schedule spans (7, October to April).
+- **Prices:** `src/_data/prices.json` holds checked prices only: Peacock Premium ($12.99/mo, $129.99/yr) and ESPN Unlimited ($31.99/mo, $319.99/yr). They match the soccer site's verified `services.json` (and ESPN's price page, checked Oct 17, 2026). **Not in our data yet:** Prime Video, NBA League Pass, DAZN team packages, team apps and regional sports networks. The tool lists them as "Price not in our data yet" and leaves them out of totals. To add one, put a checked price with its source in `prices.json` and add it to the tool's data file and JS.
+- **Files:** `src/tools/cheapest-way-to-watch-your-team.njk`, `.11tydata.js` (team counts, FAQ, WebApplication schema), `src/assets/team-cost.js`, `.tc-*` rules at the end of `src/assets/style.css`.
+- **No JS:** the form is hidden; the per-team table (local channel and game counts by network) and the price table carry the answer.
+- **Plumbing:** footer Tools list, a link on every team page (`?team=<slug>` preselects the team), home "Every team's channel" note and `/blackouts/`. In the sitemap automatically and listed in `src/llms.11ty.js`. Share image `og/tool-cheapest-way-to-watch-your-team.png` (`TOOLS` in `lib/og.js`).
 
 ## Local setup
 
@@ -207,4 +221,5 @@ We run three sister sites built the same way: howtowatchsoccerusa.com, howtowatc
 | Select dropdowns | `appearance:none` with a custom SVG chevron in the site's ink color at `right 16px center` (soccer: 15px), `padding-right:44px`. Never set a `background:` shorthand on a select after this rule, because it wipes the chevron image. Use `background-color` instead. | `src/assets/style.css` |
 | Light theme only | No dark mode on any site. Each site has its own palette. | `:root` variables in `style.css` |
 | Copy rules | Short paragraphs, no em dashes, no owner name in site copy or drafts. | Everywhere |
+| Free tools | One page per tool under `/tools/<name>/`: answer-first intro with real numbers, the live calculator (vanilla JS, no libraries, data embedded at build time), a static table or formula that works without JS, How it works, FAQ (FAQPage) plus WebApplication JSON-LD, newsletter box, own share image (`og/tool-<name>.png` or `og/tools-<name>.png`). Linked from the footer, home, related hubs/team pages and guides; listed in the sitemap and llms.txt. `?team=<slug>` preselects a team on the two cost tools. Never show a price that is not in the site's checked data. | `src/tools/`, `src/assets/<tool>.js` |
 | QA before push | Build, internal link check, axe (contrast and names) and an overflow check at 320/375/1280 with Playwright, then verify live after the Pages deploy. | Playwright helpers live outside the repos, in `/workspace/.pwtool/` on the build box |

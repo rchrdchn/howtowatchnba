@@ -15,7 +15,7 @@ module.exports = class {
     for (const t of teams) { const l = localTv[t.slug]; L.push(`- [${t.full}](${U}/teams/${t.slug}/): ${l.tv}. Streaming: ${l.stream}.${l.fdsn ? ' Moved after FanDuel Sports Network shut down.' : ''}`); }
     L.push('', '## Hubs', '',
       `- [NBA games tonight on TV](${U}/tonight/)`, `- [All 30 teams](${U}/teams/)`, `- [Where every team moved](${U}/moved/)`,
-      `- [National TV by night](${U}/which-night/)`, `- [League Pass blackout checker](${U}/blackouts/)`, `- [About and sources](${U}/about/)`,
+      `- [National TV by night](${U}/which-night/)`, `- [League Pass blackout checker](${U}/blackouts/)`, `- [Cheapest way to watch your team](${U}/tools/cheapest-way-to-watch-your-team/): pick a team and market; lists the local channel or stream, national games by network (NBC/Peacock, ESPN/ABC, Prime Video) with game counts, and monthly and season cost from checked prices (Peacock Premium, ESPN Unlimited). Add ?team=<slug> (same slugs as /teams/).`, `- [About and sources](${U}/about/)`,
       `- [RSS: local TV checks](${U}/feed.xml)`, `- [Sitemap](${U}/sitemap.xml)`, '', `Contact and corrections: ${site.email}`, '');
     return L.join('\n');
   }

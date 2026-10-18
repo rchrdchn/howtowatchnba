@@ -2,7 +2,7 @@
 // Organization schema. Same approach as the soccer and Races Near generators: an SVG card rendered by sharp.
 import sharp from 'sharp'; import fs from 'node:fs'; import path from 'node:path'; import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const { SECTIONS } = require('../lib/og.js'); const { plain } = require('../lib/seo.js');
+const { SECTIONS, TOOLS } = require('../lib/og.js'); const { plain } = require('../lib/seo.js');
 const teams = require('../src/_data/teams.json'), local = require('../src/_data/localTv.json');
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const wrap = (t, n) => { const out = []; let l = ''; for (const w of t.split(' ')) { if ((l + ' ' + w).trim().length > n) { out.push(l); l = w; } else l = (l + ' ' + w).trim(); } out.push(l); return out; };
@@ -23,6 +23,7 @@ let n = 0;
 const out = async (key, svg) => { await sharp(Buffer.from(svg)).png().toFile(`_site/og/${key}.png`); n++; };
 await out('default', card('Your team moved channels. Here\'s where.', '2026-27 NBA ON TV'));
 for (const s of SECTIONS) { const t = h1(`/${s}/`); if (t) await out(s, card(t, LABEL[s])); }
+for (const s of TOOLS) { const t = h1(`/tools/${s}/`); if (t) await out('tool-' + s, card(t, 'FREE TOOL · 2026-27 COST CALCULATOR')); }
 for (const t of teams) await out('team-' + t.slug, card(`How to watch the ${t.full}`, `2026-27 LOCAL TV: ${local[t.slug].short}`.toUpperCase().slice(0, 52), t.c1, t.c2));
 await sharp(Buffer.from(fs.readFileSync('src/favicon.svg'))).resize(512, 512).png().toFile('_site/logo.png');
 console.log('og images:', n);

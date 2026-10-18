@@ -1,0 +1,20 @@
+{
+ "_note": "Checked prices only. Copied from the verified price list on howtowatchsoccerusa.com (src/_data/services.json in that repo), which is checked against each provider's own price page. Any service not listed here shows as 'price not in our data yet' in the cheapest-way tool and is left out of totals. Update both sites together.",
+ "checked": "October 15, 2026",
+ "services": {
+  "peacock": {
+   "name": "Peacock Premium",
+   "price": 12.99,
+   "annual": 129.99,
+   "note": "with ads; $129.99/yr",
+   "source": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost"
+  },
+  "espn-unlimited": {
+   "name": "ESPN Unlimited",
+   "price": 31.99,
+   "annual": 319.99,
+   "note": "Includes the ESPN TV networks. $319.99/yr. ESPN Select ($13.99) is the former ESPN+ tier. Annual price confirmed on ESPN's price page Oct 17, 2026.",
+   "source": "https://support.espn.com/hc/en-us/articles/40375475974036-ESPN-Select-or-Unlimited-Plans-and-Prices"
+  }
+ }
+}
