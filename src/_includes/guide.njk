@@ -1,0 +1,21 @@
+---
+layout: base.njk
+---
+{% set toc = content | toc %}
+<div class="wrap">
+<p class="crumbs"><a href="/">Home</a> / <a href="/guides/">Guides</a> / {{ short or title }}</p>
+<header class="ghead">
+<p class="gk">Guide · By {{ author }}</p>
+<h1>{{ title }}</h1>
+{% updated %}
+<p class="lead">{{ description }}</p>
+</header>
+</div>
+<div class="wrap gwrap">
+<aside class="toc" aria-label="On this page"><p class="gk">On this page</p><ol>{% for t in toc %}<li><a href="#{{ t.id }}">{{ t.text }}</a></li>{% endfor %}{% if faqs %}<li><a href="#faq">FAQ</a></li>{% endif %}{% if sources %}<li><a href="#sources">Sources</a></li>{% endif %}</ol></aside>
+<article class="prose">{{ content | withIds | safe }}
+{% if faqs %}<section id="faq" class="faq"><h2>Frequently asked questions</h2>{% for f in faqs %}<details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>{% endfor %}</section>{% endif %}
+{% if sources %}<section id="sources" class="srcs"><h2>Sources</h2><ol>{% for s in sources %}<li><a href="{{ s.url }}" rel="nofollow noopener">{{ s.t }}</a></li>{% endfor %}</ol><p class="sub" style="margin-top:10px">Schedule and national TV refreshed from ESPN on {{ updated | longDate }}. Local channels hand-checked {{ site.localChecked }}. Spot an error? Email <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p></section>{% endif %}
+<p class="more-g"><a href="/guides/">← All guides</a> · <a href="/tonight/">Tonight's games</a> · <a href="/moved/">Where every team moved</a></p>
+</article>
+</div>

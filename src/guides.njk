@@ -1,0 +1,17 @@
+---
+layout: base.njk
+permalink: /guides/
+list: guides
+title: "NBA How-to-Watch Guides"
+description: Week-ahead TV guides for the biggest NBA games, with national channels, local homes after FanDuel Sports Network, blackout tips and ET/PT tip times.
+---
+<div class="wrap">
+<p class="crumbs"><a href="/">Home</a> / <span aria-current="page">Guides</span></p>
+<header class="ghead">
+<p class="gk">{{ collections.guides.length }} guide{% if collections.guides.length != 1 %}s{% endif %}</p>
+<h1>Guides: where every big game is on.</h1>
+{% updated %}
+<p class="lead">National TV, local channels after the FanDuel Sports Network shutdown, blackout gotchas and tip times in Eastern and Pacific. Sourced and dated.</p>
+</header>
+<ul class="gcards">{% for g in collections.guides %}<li class="gc"><a href="{{ g.url }}"><p class="gk">{% if loop.first %}Start here{% else %}Guide{% endif %} · Updated {{ g.data.updated | longDate }}</p><h2>{{ g.data.title }}</h2><p>{{ g.data.description }}</p><span class="go">Read the guide →</span></a></li>{% endfor %}</ul>
+</div>

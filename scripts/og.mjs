@@ -16,7 +16,7 @@ function card(title, label, c1 = '#d42a3c', c2 = '#ffd23f') {
 <text x="80" y="${226 + 34 + fs_}" font-family="DejaVu Sans, Arial, sans-serif" font-weight="700" font-size="${fs_}" fill="#0f1b2d">${tl}</text>
 <rect y="540" width="1200" height="90" fill="#0f1b2d"/><text x="80" y="595" font-family="DejaVu Sans, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">howtowatchnba.com</text><text x="1120" y="595" text-anchor="end" font-family="DejaVu Sans Mono, monospace" font-size="20" fill="#cfd8e8">2026-27 local TV for all 30 teams</text></svg>`;
 }
-const LABEL = { tonight: 'TONIGHT ON TV', teams: 'ALL 30 TEAMS', blackouts: 'LEAGUE PASS BLACKOUTS', 'which-night': 'NATIONAL TV BY NIGHT', moved: 'AFTER FANDUEL SPORTS NETWORK', about: 'ABOUT', advertise: 'ADVERTISE', contact: 'CONTACT', privacy: 'PRIVACY' };
+const LABEL = { tonight: 'TONIGHT ON TV', teams: 'ALL 30 TEAMS', blackouts: 'LEAGUE PASS BLACKOUTS', 'which-night': 'NATIONAL TV BY NIGHT', moved: 'AFTER FANDUEL SPORTS NETWORK', guides: 'HOW-TO-WATCH GUIDES', about: 'ABOUT', advertise: 'ADVERTISE', contact: 'CONTACT', privacy: 'PRIVACY' };
 const h1 = u => { const f = path.join('_site', u, 'index.html'); if (!fs.existsSync(f)) return null; const m = fs.readFileSync(f, 'utf8').match(/<h1[^>]*>([\s\S]*?)<\/h1>/); return m ? plain(m[1].replace(/<br>/g, ' ')) : null; };
 fs.mkdirSync('_site/og', { recursive: true });
 let n = 0;

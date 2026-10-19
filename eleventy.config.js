@@ -51,6 +51,16 @@ module.exports = function (c) {
     return ld ? html.replace('</head>', ld + '</head>') : html;
   });
   // Email CTA with fallbacks for visitors whose browser has no default mail app: mailto button, Copy email, visible address, Gmail/Outlook web compose.
+
+  // Guides: TOC ids, collection, and prose helpers (ported from soccer, NBA-styled).
+  const sl = s => String(s).replace(/<[^>]+>/g, '').toLowerCase().replace(/&[a-z#0-9]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  c.addFilter('withIds', html => html.replace(/<h2>(.*?)<\/h2>/g, (m, x) => `<h2 id="${sl(x)}">${x}</h2>`));
+  c.addFilter('toc', html => [...html.matchAll(/<h2>(.*?)<\/h2>/g)].map(m => ({ id: sl(m[1]), text: m[1].replace(/<[^>]+>/g, '') })));
+  c.addCollection('guides', api => api.getFilteredByGlob('src/guides/*.md').sort((a, b) => {
+    const t = g => new Date(g.data.updated || g.date).getTime() || 0;
+    return (t(b) - t(a)) || ((a.data.order || 99) - (b.data.order || 99));
+  }));
+
   c.addShortcode('emailOptions', (subject = '', label = 'Email us') => {
     const to = 'hello@howtowatchnba.com', e = encodeURIComponent, q = s => s.replace(/&/g, '&amp;');
     const mailto = `mailto:${to}${subject ? `?subject=${e(subject)}` : ''}`;
