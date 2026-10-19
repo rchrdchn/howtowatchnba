@@ -1,20 +1,403 @@
 {
- "_note": "Checked prices only. Copied from the verified price list on howtowatchsoccerusa.com (src/_data/services.json in that repo), which is checked against each provider's own price page. Any service not listed here shows as 'price not in our data yet' in the cheapest-way tool and is left out of totals. Update both sites together.",
- "checked": "October 15, 2026",
+ "_note": "Checked prices only. Every price was read on the provider's own page on the date in 'checked'. Anything missing shows as 'Price not in our data yet' in the cheapest-way tool and is left out of totals. Peacock and ESPN Unlimited also appear on howtowatchsoccerusa.com (src/_data/services.json); update both sites together. 'local' maps each team to its local stream; 'base' means the add-on needs that service too. Free over-the-air channels cost $0. No team currently needs a cable or live TV bundle as its only option.",
+ "checked": "October 18, 2026",
  "services": {
   "peacock": {
    "name": "Peacock Premium",
    "price": 12.99,
    "annual": 129.99,
-   "note": "with ads; $129.99/yr",
-   "source": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost"
+   "note": "With ads. $129.99/yr.",
+   "source": "https://www.peacocktv.com/help/article/how-much-does-a-peacock-subscription-cost",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
   },
   "espn-unlimited": {
    "name": "ESPN Unlimited",
    "price": 31.99,
    "annual": 319.99,
-   "note": "Includes the ESPN TV networks. $319.99/yr. ESPN Select ($13.99) is the former ESPN+ tier. Annual price confirmed on ESPN's price page Oct 17, 2026.",
-   "source": "https://support.espn.com/hc/en-us/articles/40375475974036-ESPN-Select-or-Unlimited-Plans-and-Prices"
+   "note": "Includes the ESPN TV networks. $319.99/yr. ESPN Select ($13.99) is the former ESPN+ tier.",
+   "source": "https://support.espn.com/hc/en-us/articles/40375475974036-ESPN-Select-or-Unlimited-Plans-and-Prices",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "prime": {
+   "name": "Amazon Prime",
+   "price": 14.99,
+   "annual": 139.0,
+   "note": "Full Prime membership, $139/yr. A standalone Prime Video membership is $8.99/mo (no yearly plan), but Amazon's NBA help page says NBA on Prime is included for Prime members, so totals use full Prime.",
+   "source": "https://us.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "prime-video": {
+   "name": "Prime Video (standalone)",
+   "price": 8.99,
+   "annual": null,
+   "note": "Standalone Prime Video membership, monthly only. Not used in totals because Amazon's NBA page names Prime members.",
+   "source": "https://us.amazon.com/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+   "checked": "October 18, 2026"
+  },
+  "league-pass": {
+   "name": "NBA League Pass",
+   "price": 16.99,
+   "annual": 109.99,
+   "note": "Every out-of-market game. National games (ESPN, ABC, NBC, Peacock, Prime Video) and your local team's games are blacked out.",
+   "source": "https://www.nba.com/league-pass-purchase",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "league-pass-premium": {
+   "name": "NBA League Pass Premium",
+   "price": 24.99,
+   "annual": 159.99,
+   "note": "No commercials, 3 devices. Same blackouts as League Pass.",
+   "source": "https://www.nba.com/league-pass-purchase",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "team-pass": {
+   "name": "NBA Team Pass",
+   "price": 13.99,
+   "annual": null,
+   "note": "One team's out-of-market games, monthly. Local and national blackouts apply (https://support.watch.nba.com/hc/en-us/articles/115000585814-NBA-Team-Pass).",
+   "source": "https://www.nba.com/league-pass-purchase",
+   "checked": "October 18, 2026"
+  },
+  "nbcs-boston": {
+   "name": "NBC Sports Boston on Peacock",
+   "price": 14.95,
+   "annual": null,
+   "note": "Peacock add-on for viewers in the Celtics region. Needs a Peacock plan on top.",
+   "source": "https://www.peacocktv.com/blog/stream-nbc-sports-regional-networks-on-peacock",
+   "checked": "October 18, 2026"
+  },
+  "nbcs-bay-area": {
+   "name": "NBC Sports Bay Area on Peacock",
+   "price": 17.95,
+   "annual": null,
+   "note": "Peacock add-on for viewers in the Warriors region. Needs a Peacock plan on top.",
+   "source": "https://www.peacocktv.com/blog/stream-nbc-sports-regional-networks-on-peacock",
+   "checked": "October 18, 2026"
+  },
+  "nbcs-california": {
+   "name": "NBC Sports California on Peacock",
+   "price": 17.95,
+   "annual": null,
+   "note": "Peacock add-on for viewers in the Kings region. Needs a Peacock plan on top.",
+   "source": "https://www.peacocktv.com/blog/stream-nbc-sports-regional-networks-on-peacock",
+   "checked": "October 18, 2026"
+  },
+  "nbcs-philadelphia": {
+   "name": "NBC Sports Philadelphia on Peacock",
+   "price": 24.95,
+   "annual": null,
+   "note": "Peacock add-on for viewers in the 76ers region. Needs a Peacock plan on top.",
+   "source": "https://www.peacocktv.com/blog/stream-nbc-sports-regional-networks-on-peacock",
+   "checked": "October 18, 2026"
+  },
+  "yes-dazn": {
+   "name": "YES on DAZN (Nets Season Pass)",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Monthly Flex $19.99, Nets Season Pass $119.99, full YES annual $209.99, day pass $12.99.",
+   "source": "https://www.dazn.com/en-US/news/basketball/brooklyn-nets-subscription-pricing-how-much-does-it-cost-season-2026-27/1ihk2c4sit6ae118sswcys434x",
+   "checked": "October 18, 2026",
+   "annualLabel": "Nets season pass"
+  },
+  "msg-dazn": {
+   "name": "MSG+ on DAZN",
+   "price": 29.99,
+   "annual": 279.99,
+   "note": "Monthly Flex $29.99, Annual Season Pass $279.99.",
+   "source": "https://www.dazn.com/en-US/news/basketball/new-york-knicks-subscription-pricing-how-much-does-it-cost-season-2026-27/86o592vsycyl1nqcoqws2d7wj",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "chsn": {
+   "name": "CHSN Bulls Only",
+   "price": 19.99,
+   "annual": null,
+   "note": "Bulls Only plan, monthly. All Access (Bulls, Blackhawks, White Sox) is $29.99/mo or $349.99/yr.",
+   "source": "https://subscribe.chsn.com/",
+   "checked": "October 18, 2026"
+  },
+  "altitude-plus": {
+   "name": "Altitude+",
+   "price": 19.95,
+   "annual": 199.99,
+   "note": "Only inside Altitude's broadcast territory.",
+   "source": "https://support.altitudeplus.com/support/solutions/articles/43000762749-how-do-i-subscribe-to-altitude-",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "schn-plus": {
+   "name": "SCHN+",
+   "price": 19.99,
+   "annual": 199.99,
+   "note": "Space City Home Network stream.",
+   "source": "https://support.schnplus.com/support/solutions/articles/43000773896-what-plans-are-available-for-schn-",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "clippervision": {
+   "name": "ClipperVision",
+   "price": 14.95,
+   "annual": 89.95,
+   "note": "In the NBA app.",
+   "source": "https://www.nba.com/watch/league-pass-stream/clippers",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "spectrum-sportsnet-plus": {
+   "name": "Spectrum SportsNet+",
+   "price": 19.99,
+   "annual": 199.99,
+   "note": "Lakers games in the NBA app.",
+   "source": "https://www.nba.com/sportsnet",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "thunder-plus": {
+   "name": "Thunder+",
+   "price": 19.99,
+   "annual": 108.99,
+   "note": "In the NBA app.",
+   "source": "https://www.nba.com/watch/league-pass-stream/thunder",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "monumental-plus": {
+   "name": "Monumental+",
+   "price": 19.99,
+   "annual": 179.99,
+   "note": "Wizards games.",
+   "source": "https://www.monumentalsportsnetwork.com/checkout",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "mavstv": {
+   "name": "MavsTV+",
+   "price": 14.99,
+   "annual": 99.99,
+   "note": "Season price shown as $99.99 (marked down from $124.99).",
+   "source": "https://www.nba.com/watch/league-pass-stream/mavericks",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "bucks-plus": {
+   "name": "Bucks+",
+   "price": 19.99,
+   "annual": 99.99,
+   "note": "In the NBA app.",
+   "source": "https://www.nba.com/watch/league-pass-stream/bucks",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "pelicans-plus": {
+   "name": "Pelicans+",
+   "price": 14.99,
+   "annual": 104.99,
+   "note": "Regular season price $104.99 after Oct 21; early bird $99.99 until then.",
+   "source": "https://www.nba.com/watch/league-pass-stream/pelicans",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "suns-plus": {
+   "name": "Suns+",
+   "price": 14.99,
+   "annual": 109.99,
+   "note": "In the NBA app.",
+   "source": "https://www.nba.com/watch/league-pass-stream/suns",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "blazervision": {
+   "name": "BlazerVision",
+   "price": 19.99,
+   "annual": 120.0,
+   "note": "In the NBA app.",
+   "source": "https://www.nba.com/watch/league-pass-stream/blazers",
+   "checked": "October 18, 2026",
+   "annualLabel": "season"
+  },
+  "jazz-plus": {
+   "name": "Jazz+",
+   "price": 19.99,
+   "annual": 124.99,
+   "note": "Plus taxes and fees. Jazz+ and Mammoth+ bundle is $174.99/yr.",
+   "source": "https://www.segplus.com/utahjazzplus/",
+   "checked": "October 18, 2026",
+   "annualLabel": "yearly plan"
+  },
+  "dazn-cavaliers": {
+   "name": "Cavs on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/cleveland-cavaliers",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-pacers": {
+   "name": "Pacers on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season. Early bird season pass $59.99 through Oct 19.",
+   "source": "https://www.dazn.com/en-US/welcome/indiana-pacers",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-grizzlies": {
+   "name": "Grizzlies on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/memphis-grizzlies",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-timberwolves": {
+   "name": "Timberwolves on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/minnesota-timberwolves",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-spurs": {
+   "name": "Spurs on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/san-antonio-spurs",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-hornets": {
+   "name": "Hornets on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/charlotte-hornets",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-magic": {
+   "name": "Magic on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/orlando-magic",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  },
+  "dazn-pistons": {
+   "name": "Pistons on DAZN",
+   "price": 19.99,
+   "annual": 119.99,
+   "note": "Standard plan. Ultimate is $24.99/mo or $139.99/season.",
+   "source": "https://www.dazn.com/en-US/welcome/detroit-pistons",
+   "checked": "October 18, 2026",
+   "annualLabel": "season pass"
+  }
+ },
+ "local": {
+  "celtics": {
+   "svc": "nbcs-boston",
+   "base": "peacock"
+  },
+  "warriors": {
+   "svc": "nbcs-bay-area",
+   "base": "peacock"
+  },
+  "kings": {
+   "svc": "nbcs-california",
+   "base": "peacock"
+  },
+  "76ers": {
+   "svc": "nbcs-philadelphia",
+   "base": "peacock"
+  },
+  "nets": {
+   "svc": "yes-dazn"
+  },
+  "knicks": {
+   "svc": "msg-dazn"
+  },
+  "bulls": {
+   "svc": "chsn"
+  },
+  "nuggets": {
+   "svc": "altitude-plus"
+  },
+  "rockets": {
+   "svc": "schn-plus"
+  },
+  "clippers": {
+   "svc": "clippervision"
+  },
+  "lakers": {
+   "svc": "spectrum-sportsnet-plus"
+  },
+  "thunder": {
+   "svc": "thunder-plus"
+  },
+  "wizards": {
+   "svc": "monumental-plus"
+  },
+  "mavericks": {
+   "svc": "mavstv"
+  },
+  "bucks": {
+   "svc": "bucks-plus"
+  },
+  "pelicans": {
+   "svc": "pelicans-plus"
+  },
+  "suns": {
+   "svc": "suns-plus"
+  },
+  "trail-blazers": {
+   "svc": "blazervision"
+  },
+  "jazz": {
+   "svc": "jazz-plus"
+  },
+  "cavaliers": {
+   "svc": "dazn-cavaliers"
+  },
+  "pacers": {
+   "svc": "dazn-pacers"
+  },
+  "grizzlies": {
+   "svc": "dazn-grizzlies"
+  },
+  "timberwolves": {
+   "svc": "dazn-timberwolves"
+  },
+  "spurs": {
+   "svc": "dazn-spurs"
+  },
+  "hornets": {
+   "svc": "dazn-hornets"
+  },
+  "magic": {
+   "svc": "dazn-magic"
+  },
+  "pistons": {
+   "svc": "dazn-pistons"
+  },
+  "heat": {
+   "free": true,
+   "note": "Local 10+ Platinum app is free in South Florida (antenna or app)."
+  },
+  "hawks": {
+   "free": true,
+   "note": "Free over the air; no standalone stream confirmed."
+  },
+  "raptors": {
+   "lp": true
   }
  }
 }

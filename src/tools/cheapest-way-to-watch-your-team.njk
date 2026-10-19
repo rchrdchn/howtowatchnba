@@ -2,14 +2,14 @@
 layout: base.njk
 permalink: /tools/cheapest-way-to-watch-your-team/
 title: "Cheapest Way to Watch Your NBA Team (2026-27): Cost Calculator"
-description: "Peacock is $12.99/mo for NBC games and ESPN Unlimited $31.99/mo for ESPN and ABC. Pick your team and market to see what you need and what it costs."
+description: "Local streams from $14.95/mo, Peacock $12.99, ESPN Unlimited $31.99, Prime $14.99, League Pass $16.99. Pick your team and ZIP to see your full NBA season cost."
 ---
 <div class="wrap tc">
 <p class="crumbs"><a href="/">Home</a> / Cheapest way to watch your team</p>
 <div class="k">Free tool · Prices checked {{ tool.checked }}</div>
 <h1>Cheapest way to watch your <span class="hi">team</span></h1>
 {% updated %}
-<p class="lead"><strong>No single service has every NBA game in 2026-27. Local games air on your team's local channel ({{ tool.antenna.length }} teams are free with an antenna), NBC and Peacock games need Peacock Premium ({{ tool.pk }}/mo), ESPN and ABC games need ESPN Unlimited ({{ tool.es }}/mo), and Prime Video has {{ tool.lg.prime }} games of its own.</strong> Pick your team and where you live to see your cheapest combo.</p>
+<p class="lead"><strong>No single service has every NBA game in 2026-27. Local games air on your team's local channel ({{ tool.antenna.length }} teams are free with an antenna), NBC and Peacock games need Peacock Premium ({{ tool.pk }}/mo), ESPN and ABC games need ESPN Unlimited ({{ tool.es }}/mo), Prime Video's {{ tool.lg.prime }} games come with Amazon Prime ({{ tool.pr }}/mo), and local streams run {{ tool.locMin }} to {{ tool.locMax }}/mo. Out of market, League Pass is {{ tool.lp }}/mo or {{ tool.lpA }} a season.</strong> Pick your team and where you live to see your cheapest combo.</p>
 
 <div class="tc-grid">
 <form class="tc-form" id="tcf" novalidate>
@@ -50,15 +50,20 @@ description: "Peacock is $12.99/mo for NBC games and ESPN Unlimited $31.99/mo fo
 <tr><th scope="row">Free antenna</th><td>{{ tool.antenna.length }} teams' local games, {{ tool.lg.nbcOta }} NBC and {{ tool.lg.abc }} ABC games</td><td>Free</td><td>Free</td></tr>
 <tr><th scope="row">Peacock Premium</th><td>{{ tool.lg.nbc }} NBC, NBCSN and Peacock games</td><td>{{ tool.pk }}</td><td>{{ tool.pkA }}</td></tr>
 <tr><th scope="row">ESPN Unlimited</th><td>{{ tool.lg.espn }} ESPN and ABC games</td><td>{{ tool.es }}</td><td>{{ tool.esA }}</td></tr>
-<tr><th scope="row">Prime Video</th><td>{{ tool.lg.prime }} games</td><td colspan="2">Price not in our data yet</td></tr>
-<tr><th scope="row">DAZN, team apps, local sports networks</th><td>Local games, in your home area</td><td colspan="2">Price not in our data yet</td></tr>
-<tr><th scope="row">NBA League Pass</th><td>Out-of-market games not on national TV</td><td colspan="2">Price not in our data yet</td></tr>
+<tr><th scope="row">Amazon Prime<small>Standalone Prime Video is {{ tool.pv }}/mo</small></th><td>{{ tool.lg.prime }} Prime Video games</td><td>{{ tool.pr }}</td><td>{{ tool.prA }}</td></tr>
+<tr><th scope="row">NBA League Pass<small>Premium (no ads): {{ tool.lpp }}/mo or {{ tool.lppA }}</small></th><td>Out-of-market games not on national TV. Local and national games blacked out</td><td>{{ tool.lp }}</td><td>{{ tool.lpA }} season</td></tr>
+<tr><th scope="row">NBA Team Pass</th><td>One team's out-of-market games, same blackouts</td><td>{{ tool.tp }}</td><td>Monthly only</td></tr>
 </tbody></table></div>
-<p class="fine">We only show prices we have checked on the provider's own price page. Game counts include games with both teams set (NBA Cup knockout games are added once they are drawn).</p></section>
+<p class="fine">Sources: <a href="{{ tool.src.peacock }}" rel="noopener">Peacock</a>, <a href="{{ tool.src['espn-unlimited'] }}" rel="noopener">ESPN</a>, <a href="{{ tool.src.prime }}" rel="noopener">Amazon</a>, <a href="{{ tool.src['league-pass'] }}" rel="noopener">NBA League Pass</a>. We only show prices we have checked on the provider's own price page. Game counts include games with both teams set (NBA Cup knockout games are added once they are drawn).</p></section>
+
+<section aria-labelledby="lsh"><div class="sec"><h2 id="lsh">How much is each team's local stream?</h2></div>
+<div class="tc-tw"><table class="tc-t tc-p"><caption>In-market only. Checked {{ tool.checked }} on each provider's page. No team needs a cable or live TV bundle as its only option.</caption>
+<thead><tr><th scope="col">Team</th><th scope="col">Local stream</th><th scope="col">Monthly</th><th scope="col">Season</th></tr></thead>
+<tbody>{% for r in tool.locRows | sort(false, false, 'full') %}<tr><th scope="row"><a href="/teams/{{ r.slug }}/">{{ r.full }}</a></th>{% if r.svc %}<td><a href="{{ r.src }}" rel="noopener">{{ r.svc }}</a>{% if r.base %}<small>Add-on, needs {{ r.base }}</small>{% endif %}{% if r.row == 'antenna' %}<small class="free">Games also free with antenna</small>{% endif %}</td><td>{{ r.p }}</td><td>{{ r.a or 'Monthly only' }}</td>{% elif r.lp %}<td>{{ r.st }}</td><td>{{ tool.tp }} (Team Pass)</td><td>{{ tool.lpA }} (League Pass)</td>{% elif r.free %}<td>{{ r.ch }} <small class="free">Free with antenna</small></td><td>Free</td><td>Free</td>{% else %}<td>{{ r.st }}</td><td colspan="2">Price not in our data yet</td>{% endif %}</tr>{% endfor %}</tbody></table></div></section>
 
 <section aria-labelledby="hwh"><div class="sec"><h2 id="hwh">How does the calculator work?</h2></div>
 <div class="tc-prose"><p>Games on NBC, Peacock, NBCSN, ESPN, ABC and Prime Video are national exclusives, so your local channel does not show them. Every other game airs on your team's local channel in its home area, and on League Pass everywhere else. NBA TV games still air locally, so they need no extra service.</p>
-<p><strong>Season cost</strong> = monthly price × months, or the yearly plan when that is cheaper. Services without a checked price are listed but left out of the total.</p></div></section>
+<p><strong>Season cost</strong> = monthly price × months, or the yearly plan when that is cheaper. Local streams, Peacock add-ons (plus Peacock itself), League Pass or Team Pass out of market, and Amazon Prime are all included. Services without a checked price are listed but left out of the total.</p></div></section>
 
 {% include "faqblock.njk" %}
 <section class="tc-nl" aria-labelledby="tnh"><h2 id="tnh">Channels change. We will tell you.</h2><p>One short email a week with your team's games and exactly where each one airs, including any channel moves. Free.</p><a class="btn" href="{{ site.newsletterUrl }}" target="_blank" rel="noopener">Subscribe free →</a></section>

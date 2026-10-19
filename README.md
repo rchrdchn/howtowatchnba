@@ -46,7 +46,7 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 │   ├── _data/
 │   │   ├── schedule.json          Generated season schedule with national TV (do not edit by hand)
 │   │   ├── localTv.json           Hand-checked local TV for all 30 teams
-│   │   ├── prices.json            Checked prices only (Peacock Premium, ESPN Unlimited), used by the cheapest-way tool
+│   │   ├── prices.json            Checked prices only (national services, League Pass, Prime, every team's local stream) with source + checked date, used by the cheapest-way tool
 │   │   ├── teams.json             Names, ESPN abbreviations, slugs, brand colors
 │   │   ├── zipMarkets.json        3-digit ZIP prefix to home team(s), for the blackout checker
 │   │   ├── week.json              The weekly national TV pattern (Mon to Sun)
@@ -85,7 +85,7 @@ Editorial rule: legal, licensed viewing only, and money never changes what a pag
 |---|---|---|
 | `schedule.json` | ESPN's public scoreboard feed (unofficial, no license). One request per day of the season, about 1,200 games. | Nightly, automatic |
 | `localTv.json` | Team announcements, station releases, trade press | By hand, weekly |
-| `prices.json` | Provider price pages (same figures as the soccer site's `services.json`) | By hand, with the soccer price check |
+| `prices.json` | Each provider's own price page (URL and checked date stored per price). Peacock and ESPN match the soccer site's `services.json` | By hand; recheck before each season and when a provider announces a change |
 | `zipMarkets.json` | Hand-built approximation of team markets | Rarely |
 | `week.json` | National TV deals | When the pattern changes |
 
@@ -140,7 +140,12 @@ Add it to the nav or footer in `base.njk` if needed. The sitemap picks up every 
 
 - **What it does:** pick a team, say whether you live in its home area (or type a ZIP, which sets that using the approximate `zipMarkets.json` map), and tick local, NBC/Peacock, ESPN/ABC and Prime Video games. It lists each service with how many of that team's games it carries, monthly and season cost, and how many games are free with an antenna.
 - **Data:** game counts per team from `schedule.json` (NBC, NBCSN and Peacock = Peacock; ESPN, ESPN2 and ABC = ESPN Unlimited; Prime Video; everything else is local, and NBA TV games still air locally). Local channel, stream and free-TV details from `localTv.json`. Season length = the months the team's schedule spans (7, October to April).
-- **Prices:** `src/_data/prices.json` holds checked prices only: Peacock Premium ($12.99/mo, $129.99/yr) and ESPN Unlimited ($31.99/mo, $319.99/yr). They match the soccer site's verified `services.json` (and ESPN's price page, checked Oct 17, 2026). **Not in our data yet:** Prime Video, NBA League Pass, DAZN team packages, team apps and regional sports networks. The tool lists them as "Price not in our data yet" and leaves them out of totals. To add one, put a checked price with its source in `prices.json` and add it to the tool's data file and JS.
+- **Prices:** `src/_data/prices.json` holds checked prices only. Each entry in `services` has `name`, `price` (monthly), `annual` (season or yearly plan, or null), `annualLabel`, `note`, `source` (the provider page it was read on) and `checked`. `local` maps each team slug to its in-market stream (`svc`), plus `base` when the stream is an add-on that needs another service (the NBC Sports networks need Peacock), `free` for antenna-only teams with no paid stream, and `lp` for the Raptors (League Pass in the US). All prices below were checked Oct 18, 2026:
+  - National: Peacock Premium $12.99/mo or $129.99/yr; ESPN Unlimited $31.99/mo or $319.99/yr; Amazon Prime $14.99/mo or $139/yr (standalone Prime Video $8.99/mo is listed but not used, since Amazon's NBA help page says the games are for Prime members).
+  - NBA League Pass $16.99/mo or $109.99/season; Premium $24.99/mo or $159.99/season; Team Pass $13.99/mo. All black out local and national games (nba.com/league-pass-purchase and the NBA Team Pass help article).
+  - Local streams: NBC Sports Boston $14.95, Bay Area $17.95, California $17.95, Philadelphia $24.95 (Peacock add-ons, monthly); YES on DAZN $19.99/mo or Nets Season Pass $119.99; MSG+ on DAZN $29.99/mo or $279.99; CHSN Bulls Only $19.99/mo; Altitude+ $19.95/mo or $199.99/yr; SCHN+ $19.99/mo or $199.99/yr; ClipperVision $14.95/mo or $89.95; Spectrum SportsNet+ $19.99/mo or $199.99; Thunder+ $19.99/mo or $108.99; Monumental+ $19.99/mo or $179.99/yr; MavsTV+ $14.99/mo or $99.99; Bucks+ $19.99/mo or $99.99; Pelicans+ $14.99/mo or $104.99 (early bird $99.99 to Oct 21); Suns+ $14.99/mo or $109.99; BlazerVision $19.99/mo or $120; Jazz+ $19.99/mo or $124.99/yr; DAZN team packages (Cavs, Pacers, Grizzlies, Timberwolves, Spurs, Hornets, Magic, Pistons) $19.99/mo or $119.99/season.
+  - Free: Hawks and Heat local games are over the air (Heat's Local 10+ Platinum app is free in South Florida). No team needs a cable or live TV bundle as its only option, so none is priced.
+  - **How totals work:** season = monthly x months (7) or the season/yearly price if cheaper. In market, antenna teams count as free (the stream price is shown as an option). Out of market, the tool picks the cheaper of Team Pass and League Pass. Peacock is counted once even when it is both the NBC service and the base for an NBC Sports add-on. Anything without a checked price shows "Price not in our data yet" and is left out of totals.
 - **Files:** `src/tools/cheapest-way-to-watch-your-team.njk`, `.11tydata.js` (team counts, FAQ, WebApplication schema), `src/assets/team-cost.js`, `.tc-*` rules at the end of `src/assets/style.css`.
 - **No JS:** the form is hidden; the per-team table (local channel and game counts by network) and the price table carry the answer.
 - **Plumbing:** footer Tools list, a link on every team page (`?team=<slug>` preselects the team), home "Every team's channel" note and `/blackouts/`. In the sitemap automatically and listed in `src/llms.11ty.js`. Share image `og/tool-cheapest-way-to-watch-your-team.png` (`TOOLS` in `lib/og.js`).
