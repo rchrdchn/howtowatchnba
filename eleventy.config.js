@@ -39,6 +39,13 @@ module.exports = function (c) {
     const items = d.list === 'teams' ? pages.teamItems() : d.list === 'moved' ? pages.teamItems(tv.teams.filter(t => tv.local[t.slug].fdsn).map(t => t.slug)) : d.list === 'tonight' ? pages.tonightItems() : null;
     const pg = { '@type': d.kind || (items ? 'CollectionPage' : 'WebPage'), '@id': url + '#webpage', url, name: seo.seoTitle(d.title), description: seo.seoDesc(d.description), isPartOf: { '@id': web['@id'] }, inLanguage: 'en-US', primaryImageOfPage: { '@type': 'ImageObject', url: og }, dateModified: '__LASTMOD_ISO__' };
     if (d.kind === 'AboutPage') pg.about = { '@id': org['@id'] };
+    if (d.kind === 'NewsArticle' || d.kind === 'Article') {
+      Object.assign(pg, { headline: seo.seoTitle(d.title), author: { '@type': 'Organization', name: d.author || site.name, url: site.url + '/about/' }, publisher: { '@id': org['@id'] }, image: og });
+      if (d.date) pg.datePublished = new Date(d.date).toISOString();
+      const gs = (d.games || []).map(id => tv.all().find(x => x.id === String(id))).filter(Boolean);
+      if (gs.length) pg.about = gs.map(pages.event);
+      if (d.teamsMentioned) pg.mentions = d.teamsMentioned.map(a => tv.byAbbr[a]).filter(Boolean).map(t => ({ '@type': 'SportsTeam', name: t.full, url: `${site.url}/teams/${t.slug}/` }));
+    }
     if (items && items.length) pg.mainEntity = { '@type': 'ItemList', numberOfItems: items.length, itemListElement: items };
     const g = [org, web, pg];
     if (d.t) { const tn = pages.teamNodes(d.t); pg.about = { '@id': tn[0]['@id'] }; g.push(...tn); }
@@ -60,6 +67,14 @@ module.exports = function (c) {
     const t = g => new Date(g.data.updated || g.date).getTime() || 0;
     return (t(b) - t(a)) || ((a.data.order || 99) - (b.data.order || 99));
   }));
+
+  // News: daily tonight previews and scores recaps under /news/ (written by the morning routine).
+  c.addCollection('news', api => api.getFilteredByGlob('src/news/*.md').sort((a, b) => (b.date - a.date) || a.data.title.localeCompare(b.data.title)));
+  // Team mention in team colors, linked to the team page: {% team "BOS" %} or {% team "BOS", "Boston Celtics" %}.
+  c.addShortcode('team', (abbr, label) => {
+    const t = tv.byAbbr[abbr]; if (!t) throw new Error('team shortcode: unknown team ' + abbr);
+    return `<a class="tmn" href="/teams/${t.slug}/" style="--c1:${color.safeBg(t.c1)};--c2:${t.c2}">${label || t.name}</a>`;
+  });
 
   c.addShortcode('emailOptions', (subject = '', label = 'Email us') => {
     const to = 'hello@howtowatchnba.com', e = encodeURIComponent, q = s => s.replace(/&/g, '&amp;');

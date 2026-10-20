@@ -4,7 +4,7 @@
 <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:site_name" content="{{ site.name }}"><meta property="og:title" content="{{ st }}"><meta property="og:description" content="{{ sd }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta property="og:image" content="{{ ogimg }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{{ st }}"><meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{ st }}"><meta name="twitter:description" content="{{ sd }}"><meta name="twitter:image" content="{{ ogimg }}">
-{% if noindex %}<meta name="robots" content="noindex">{% else %}<script type="application/ld+json">{{ { url: page.url, title: title, description: description, list: list, kind: kind, faqs: faqs, t: t if (t and t.abbr) else null } | pageGraph | safe }}</script>{% endif %}
+{% if noindex %}<meta name="robots" content="noindex">{% else %}<script type="application/ld+json">{{ { url: page.url, title: title, description: description, list: list, kind: kind, faqs: faqs, date: (page.date if (kind == 'NewsArticle' or kind == 'Article') else null), author: author, games: games, teamsMentioned: teamsMentioned, t: t if (t and t.abbr) else null } | pageGraph | safe }}</script>{% endif %}
 <link rel="stylesheet" href="/assets/style.css?v={{ build.v }}">
 {% if teamStyle %}<style>:root{ {{ teamStyle | safe }} }</style>{% endif %}
 </head><body><a class="skip" href="#main">Skip to content</a>
@@ -18,7 +18,7 @@
 <p class="ftag">Your team moved channels. <span>Here's where.</span></p>
 <p class="fmail"><a href="mailto:{{ site.email }}">{{ site.email }}</a><button type="button" class="fcopy ecopy" data-email="{{ site.email }}" aria-label="Copy email address">Copy</button></p>
 <a class="fadv" href="/advertise/">Advertise with us →</a></div>
-<nav class="fl" aria-label="Tools"><h3>Tools</h3><a href="/tonight/">Tonight's games</a><a href="/guides/">Guides</a><a href="/blackouts/">League Pass blackout checker</a><a href="/moved/">Where Every Team Moved</a><a href="/which-night/">Which night is whose</a><a href="/teams/">All 30 teams</a><a href="/tools/cheapest-way-to-watch-your-team/">Cheapest way to watch your team</a></nav>
+<nav class="fl" aria-label="Tools"><h3>Tools</h3><a href="/tonight/">Tonight's games</a><a href="/guides/">Guides</a><a href="/news/">News: tonight and scores</a><a href="/blackouts/">League Pass blackout checker</a><a href="/moved/">Where Every Team Moved</a><a href="/which-night/">Which night is whose</a><a href="/teams/">All 30 teams</a><a href="/tools/cheapest-way-to-watch-your-team/">Cheapest way to watch your team</a></nav>
 <nav class="fl" aria-label="Site"><h3>Site</h3><a href="/about/">About &amp; sources</a><a href="/contact/">Contact</a><a href="/advertise/">Advertise</a><a href="/privacy/">Privacy</a><a href="/sitemap.xml">Sitemap</a></nav>
 </div>
 <div class="fteams">{% for conf in ["East","West"] %}<nav class="fconf fc-{{ conf | lower }}" aria-label="{{ conf }} teams"><h3>{{ conf }}<span>15 teams</span></h3><div class="fchips">{% for t in teams %}{% if t.conf == conf %}<a href="/teams/{{ t.slug }}/" style="--c1:{{ t.c1 | safeBg }};--c2:{{ t.c2 }}"><i aria-hidden="true">{{ t.abbr }}</i><span>{{ t.name }}</span></a>{% endif %}{% endfor %}</div></nav>{% endfor %}</div>

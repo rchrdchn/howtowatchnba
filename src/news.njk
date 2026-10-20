@@ -1,0 +1,18 @@
+---
+layout: base.njk
+permalink: /news/
+list: news
+kind: CollectionPage
+title: "NBA News: Tonight's TV Schedule and Last Night's Scores"
+description: "Daily NBA posts: how to watch tonight's games with channels, streaming and blackout notes, plus scores and results from last night with verified stat lines."
+---
+<div class="wrap">
+<p class="crumbs"><a href="/">Home</a> / <span aria-current="page">News</span></p>
+<header class="ghead">
+<p class="gk">{{ collections.news.length }} post{% if collections.news.length != 1 %}s{% endif %}</p>
+<h1>Tonight's TV and <span class="acc">last night's scores.</span></h1>
+{% updated %}
+<p class="lead">Every game night: where each game is on TV and streaming, tip times in Eastern and Pacific, then the final scores and top stat lines the next morning. For the live channel grid, see <a href="/tonight/">Tonight's games</a>.</p>
+</header>
+<ul class="gcards nlist">{% for g in collections.news %}<li class="gc"><a href="{{ g.url }}"><p class="gk">{% if g.data.postType == 'recap' %}Scores{% else %}Tonight{% endif %} · {{ g.date | isoDate | longDate }}</p><h2>{{ g.data.title }}</h2><p>{{ g.data.description }}</p><span class="go">Read the post →</span></a></li>{% endfor %}</ul>
+</div>

@@ -111,7 +111,7 @@ Safeguards:
 
 - **Generated pages:** home, tonight, 30 team pages, teams index, moved, which-night, blackouts.
 - **Static pages** in Markdown: about, advertise, contact, privacy.
-- **Posts and guides:** daily pre-game and post-game posts and a weekly guide are produced by scheduled routines and go out through the newsletter. There is no guides folder in this repo yet.
+- **Posts and guides:** guides live in `src/guides/` (hub `/guides/`). Daily posts live in `src/news/` (hub `/news/`, layout `src/_includes/post.njk`): a "How to Watch NBA Tonight" preview on game days (`postType: preview`) and an "NBA Scores & Results" recap the morning after (`postType: recap`), written by the morning routine. Front matter `games` (ESPN game ids) becomes SportsEvent schema and `teamsMentioned` becomes `mentions`; `{% team "BOS" %}` renders a team-colored link to the team page.
 
 ### Adding a page
 
