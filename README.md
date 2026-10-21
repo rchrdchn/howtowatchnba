@@ -14,6 +14,14 @@ The 2026-27 season reshuffled local NBA TV. FanDuel Sports Network shut down, 13
 1. **Sponsors.** `/advertise/` sells a newsletter sponsor slot (one per weekly issue), banners on team pages and sponsorship of the tonight grid. Paid placements are labeled sponsored.
 2. **Affiliates (planned).** No affiliate links are live yet. The About page says some links may become affiliate links and will be labeled. When a program approves us (for example a streaming service or League Pass partner), tag only that service's links and use `rel="sponsored nofollow noopener"`, the same as the soccer site.
 
+### Affiliate status tracker (as of Oct 21, 2026)
+
+No programs applied yet. NBA streaming affiliate programs (League Pass, regional sports networks, live TV services) have not been researched yet. The shared Awin publisher account (Tiny Labs LLC, 3126478) is approved and can be used here.
+
+| Program | Site | Applied | Status | Next step |
+|---|---|---|---|---|
+| NBA streaming programs | NBA | – | Not researched | Research programs, then apply with owner approval |
+
 Editorial rule: legal, licensed viewing only, and money never changes what a page says about where a game airs.
 
 ## Tech stack
