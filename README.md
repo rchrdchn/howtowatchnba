@@ -187,6 +187,13 @@ Preview another night: `BUILD_NOW=2026-10-21T16:00:00Z npm run build`.
 - **Real lastmod:** each page's title, description and main content are hashed. Only pages whose hash changed get a new time in `lastmod.json`. That time feeds the sitemap `<lastmod>`, the visible "Updated" line under each H1 and `dateModified` in JSON-LD, so all three match.
 - **Structured data:** one graph per page with `Organization`, `WebSite` and the page node. Team pages add `SportsTeam` and the next five games as `SportsEvent` with the TV channel. `/teams/`, `/moved/` and `/tonight/` add an `ItemList`. FAQs (home, tonight, blackouts, which-night, team pages) are visible and marked up as `FAQPage`. Breadcrumbs come from the `crumbs` line.
 - **Share images:** 1200x630 cards per team and section in `/og/`, built by `scripts/og.mjs` with sharp.
+  - **News posts get their own card** (`og/news-<slug>.png`), so each preview or recap shows a scoreboard when shared. It's dark and high contrast and readable at thumbnail size: the date, a TONIGHT ON TV or FINAL SCORES pill, up to three matchups with team-color chips (no logos), then "+N more games".
+  - **Matchups** come from `games` (via `schedule.json`). If those games have aged out of the schedule, the card pairs up `teamsMentioned` and shows "vs".
+  - **Recap scores** are read from the post's own text, either "76ers 114, Cavaliers 106" or "the Pistons beat the Celtics 121-113".
+  - **Previews** list national TV games first, with tip time and network.
+  - **Override:** add `card: { kicker: "...", rows: [["PHI", 114, "CLE", 106]] }` to the front matter when a recap's wording doesn't match those patterns. Each row is winner, score, loser, score.
+  - **No extra step for the morning routine.** Any new `.md` in `src/news/` gets a card and absolute `og:image` / `twitter:image` tags on the next build. `lib/og.js` maps `/news/<slug>/` to `news-<slug>`.
+  - **Article tags:** news pages also send `og:type=article` and `article:published_time`.
 - **AI search:** `/llms.txt` and `/feed.xml` rebuild with every deploy. `robots.txt` allows every crawler and names the main search and AI bots explicitly.
 - **IndexNow:** the nightly job pings only changed URLs. `npm run indexnow -- --all` sends the full sitemap. The key name is `indexNowKey` in `site.json` and the file is `src/<key>.txt`.
 - **Google Search Console:** owned by the site owner. Resubmit `/sitemap.xml` after big changes.

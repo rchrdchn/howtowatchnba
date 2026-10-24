@@ -17,6 +17,7 @@ module.exports = function (c) {
   c.addFilter('etLong', d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' }));
   c.addFilter('pt', d => tv.time(d, 'America/Los_Angeles'));
   c.addFilter('sitemapPages', ps => ps.filter(p => p.url && p.url.endsWith('/') && !p.data.noindex).sort((a, b) => a.url === '/' ? -1 : b.url === '/' ? 1 : a.url.localeCompare(b.url)));
+  c.addFilter('isoFull', d => new Date(d).toISOString());
   c.addFilter('isoDate', d => new Date(d).toISOString().slice(0, 10));
 
   // SEO helpers shared with the soccer and Races Near sites (lib/seo.js).
