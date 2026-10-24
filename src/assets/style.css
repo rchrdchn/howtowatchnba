@@ -275,6 +275,8 @@ select::-ms-expand{display:none}
 .gc .go{display:inline-block;margin-top:10px;font-weight:800;color:var(--coral)}.gc a:hover h2{color:var(--coral);text-decoration:underline}
 @media(max-width:960px){.gwrap{grid-template-columns:minmax(0,1fr)}.toc{position:static}}
 @media(max-width:720px){.gcards{grid-template-columns:minmax(0,1fr)}.prose table{font-size:14px}.prose th,.prose td{padding:8px 10px}}
+/* 320px phones: wide tables (4-column TV listings) scroll inside the box instead of the page */
+@media(max-width:374px){.prose table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 /* Team mentions in posts: team color text with a second-color underline */
 .tmn{color:var(--c1);font-weight:800;text-decoration:underline;text-decoration-color:var(--c2);text-decoration-thickness:3px;text-underline-offset:3px}
 .tmn:hover{text-decoration-color:var(--c1)}
